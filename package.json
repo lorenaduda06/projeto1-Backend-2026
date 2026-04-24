@@ -1,12 +1,24 @@
 {
-  "name": "projeto1_lorenaeduarda",
+  "name": "projeto1-backend-2026",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lorenaduda06/projeto1-Backend-2026.git"
+  },
   "keywords": [],
-  "author": "Lorena Eduarda Barros Martinelli",
-  "license": "ISC"
+  "author": "Lorena Eduarda Barros Martinelli; Giovanna Furlan Fernandes; Caelayne Aparecida Ribeiro Soares",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/lorenaduda06/projeto1-Backend-2026/issues"
+  },
+  "homepage": "https://github.com/lorenaduda06/projeto1-Backend-2026#readme",
+  "dependencies": {
+    "pg": "^8.20.0",
+    "sequelize": "^6.37.8"
+  }
 }
