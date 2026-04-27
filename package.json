@@ -18,6 +18,8 @@
   },
   "homepage": "https://github.com/lorenaduda06/projeto1-Backend-2026#readme",
   "dependencies": {
+    "express": "^5.2.1",
+    "express-handlebars": "^8.0.3",
     "pg": "^8.20.0",
     "sequelize": "^6.37.8"
   }
