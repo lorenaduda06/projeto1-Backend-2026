@@ -24,7 +24,7 @@ db.Categoria = require("../models/relational/categoria.js")(sequelize, Sequelize
 
 db.Habilidade = require("../models/relational/habilidade.js")(sequelize, Sequelize);
 
-db.Habilidade = require("../models/relational/alunoHabilidade.js")(sequelize, Sequelize);
+db.AlunoHabilidade = require("../models/relational/alunoHabilidade.js")(sequelize, Sequelize);
 
 // Relacionamentos entre tabelas (ainda não foram criadas oficialmente)
 // Seguindo modelo das aulas:
