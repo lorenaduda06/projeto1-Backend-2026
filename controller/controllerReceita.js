@@ -1,14 +1,14 @@
-const db = require("../config/db_sequelize");
+const db = require("../config/db");
 
 module.exports = {
-    // CRUD de receitas (ára aluno logado)
+    // CRUD de receitas (área aluno logado)
 
     // Formulário de criação
     async getCreate(req, res) {
         let cat = await db.Categoria.findAll();
         let alunos = await db.Aluno.findAll({
             where: {
-                tipo: 1
+                tipo: 0     // Tipo 0: aluno comum; tipo 1: admin
             }
         });
 
@@ -20,8 +20,6 @@ module.exports = {
 
     // Salvar nova receita
     async postCreate(req, res) {
-        const aluno_id = req.session.aluno_id;  // Aluno logado
-
         // Garante 'categoria_ids' ser um array 
         let categoria_ids = req.body.categoria_ids || [];
         if (!Array.isArray(categoria_ids)) categoria_ids = [categoria_ids];
@@ -42,7 +40,7 @@ module.exports = {
             // Associa categorias à receita (cardinalidade: many to many)
             await receita.setCategorias(categoria_ids);
 
-            // Associa alunos à receita (cardinalidade> many to many)
+            // Associa alunos à receita (cardinalidade: many to many)
             await receita.setAlunos(aluno_ids);
             res.redirect("/receitaList");
         }).catch((error) => {
@@ -52,7 +50,6 @@ module.exports = {
 
     // Listar receitas do aluno
     async getList(req, res) {
-        const aluno_id = req.session.aluno_id;
         db.Receita.findAll({
             include: [
                 { model: db.Aluno, where: { id: req.session.aluno_id }},    // Lista apenas receitas do aluno logado
@@ -69,7 +66,6 @@ module.exports = {
 
     // Formulário de edição
     async getUpdate(req, res) {
-        const aluno_id = req.session.aluno_id;
         let cat = await db.Categoria.findAll();
         let alunos = await db.Aluno.findAll({
             where: {
@@ -95,8 +91,6 @@ module.exports = {
 
     // Salvar edição
     async postUpdate(req, res) {
-        const aluno_id = req.session.aluno_id;
-
         let categoria_ids = req.body.categoria_ids || [];
         if (!Array.isArray(categoria_ids)) categoria_ids = [categoria_ids];
 
@@ -123,7 +117,6 @@ module.exports = {
 
     // Deletar receita
     async getDelete(req, res) {
-        const aluno_id = req.session.aluno_id;
         await db.Receita.findByPk(req.params.id, {
             include: [
                 { model: db.Aluno }

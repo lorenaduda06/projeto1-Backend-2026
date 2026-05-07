@@ -1,4 +1,4 @@
-const db = require("../config/db_sequelize");
+const db = require("../config/db");
 
 module.exports = {
     // Logout do sistema
@@ -21,14 +21,14 @@ module.exports = {
             }
         }).then(alunos => {
             if (alunos.length > 0) {
-                // Informações salvas na sessãi
-                req.session.login = req.body.login;
+                // Informações salvas na sessão
+                req.session.login = req.body.email;
                 req.session.aluno_id = alunos[0].dataValues.id;
 
                 req.session.tipo = alunos[0].dataValues.tipo;
 
-                // Informaçõesdisponíveis em 'views'
-                res.locals.login = req.body.login;
+                // Informações disponíveis em 'views'
+                res.locals.login = req.body.email;
 
                 if (alunos[0].dataValues.tipo == 1) {
                     res.locals.admin = true;
@@ -115,13 +115,11 @@ module.exports = {
 
     // Habilidades do aluno
     async getHabilidades(req, res) {
-        const aluno_id = req.session.aluno_id;  // Aluno logado
-
         // Busca todas as habilidades disponíveis
         let todas_hab = await db.Habilidade.findAll();
 
         // Busca o aluno com suas habilidades
-        let aluno = await db.Aluno.findByPk(aluno_id, {
+        let aluno = await db.Aluno.findByPk(req.session.aluno_id, {
             include: [{
                 model: db.Habilidade
             }]
@@ -142,6 +140,12 @@ module.exports = {
 
     // Adicionar habilidade ao aluno
     async postHabilidade(req, res) {
+        const nivel = parseInt(req.body.nivel);
+        if (nivel < 0 || nivel > 10) {
+            console.log("O nível deve estar entre 0-10");
+            return res.redirect("/home");
+        }
+
         await db.AlunoHabilidade.create({
             aluno_id: req.session.aluno_id,
             habilidade_id: req.body.habilidade_id,
@@ -153,9 +157,8 @@ module.exports = {
         });
     },
 
-    // Remover habilidade do aluno
+    // Remover habilidade do aluno (ver se precisa)
     async deleteHabilidade(req, res) {
-        const aluno_id = req.session.aluno_id;
         await db.AlunoHabilidade.destroy({
             where: {
                 aluno_id: req.session.aluno_id,

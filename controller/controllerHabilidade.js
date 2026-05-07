@@ -1,4 +1,4 @@
-const db = require("../config/db_sequelize");
+const db = require("../config/db");
 
 module.exports = {
     // Formulário de criação
@@ -6,10 +6,10 @@ module.exports = {
         res.render("habilidade/habilidadeCreate");
     },
 
-     // Salvar nova habilidade
+    // Salvar nova habilidade
     async postCreate(req, res) {
         db.Habilidade.create(req.body).then(() => {
-            res.redirect("/habilidadeList");
+            res.redirect("/home");
         }).catch((error) => {
             console.log("Erro: ", error);
         });

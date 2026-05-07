@@ -1,4 +1,4 @@
-const db = require("../config/db_sequelize");
+const db = require("../config/db");
 
 module.exports = {
     // Formulário de criação
