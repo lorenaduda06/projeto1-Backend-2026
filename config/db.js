@@ -4,8 +4,10 @@ Giovanna Furlan Fernandes – RA: 2706385;
 Lorena Eduarda Barros Martinelli – RA: 2767104
 */
 
+// Importação do Sequelize (um ORM que facilita comunicação com o PostgreSQL -> traduzindo JS em comandos SQL)
 const Sequelize = require("sequelize");
 
+// Conexão com o BD
 const sequelize = new Sequelize("receitasweb_db", "postgres", "dbpessoa123", {
     host: "localhost",
     dialect: "postgres"
@@ -13,9 +15,13 @@ const sequelize = new Sequelize("receitasweb_db", "postgres", "dbpessoa123", {
 
 let db = {};
 
+// Biblioteca Sequelize
 db.Sequelize = Sequelize;
+
+// Conexão com o banco
 db.sequelize = sequelize;
 
+// Importação dos modelos (tabelas)
 db.Aluno = require("../models/relational/aluno.js")(sequelize, Sequelize);
 
 db.Receita = require("../models/relational/receita.js")(sequelize, Sequelize);

@@ -1,12 +1,15 @@
+// Importação da configuração do banco de dados
 const db = require("../config/db");
 
 module.exports = {
-    // Formulário de criação
+    // CRUD de habilidades (apenas admin pode acessar)
+
+    // Formulário para criar nova habilidade
     async getCreate(req, res) {
         res.render("habilidade/habilidadeCreate");
     },
 
-    // Salvar nova habilidade
+    // Salvar nova habilidade no banco de dados
     async postCreate(req, res) {
         db.Habilidade.create(req.body).then(() => {
             res.redirect("/home");
@@ -15,7 +18,7 @@ module.exports = {
         });
     },
 
-    // Listar todas habilidades
+    // Listar todas categorias cadastradas
     async getList(req, res) {
         db.Habilidade.findAll().then(habilidades => {
             res.render("habilidade/habilidadeList", {
@@ -26,7 +29,7 @@ module.exports = {
         });
     },
 
-    // Editar habilidade
+    // Busca uma habilidade específica para editar
     async getUpdate(req, res) {
         await db.Habilidade.findByPk(req.params.id).then(habilidade => {
             res.render("habilidade/habilidadeUpdate", {
@@ -37,7 +40,7 @@ module.exports = {
         });
     },
 
-    // Salvar edição
+    // Salvar alterações de uma habilidade
     async postUpdate(req, res) {
         await db.Habilidade.update(req.body, {
             where: {
@@ -50,7 +53,7 @@ module.exports = {
         });
     },
 
-    // Deletar habilidade
+    // Deletar habilidade do banco de dados
     async getDelete(req, res) {
         await db.Habilidade.destroy({
             where: {

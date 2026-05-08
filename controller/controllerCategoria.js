@@ -1,21 +1,24 @@
+// Importação da configuração do banco de dados
 const db = require("../config/db");
 
 module.exports = {
-    // Formulário de criação
+    // CRUD de categorias (apenas admin pode acessar)
+
+    // Formulário para criar nova categoria
     async getCreate(req, res) {
         res.render("categoria/categoriaCreate");
     },
 
-    // Salvar nova categoria
+    // Salvar nova categoria no banco de dados
     async postCreate(req, res) {
         db.Categoria.create(req.body).then(() => {
-            res.redirect("/home");
+            res.redirect("/home");          // Redreciona para home após salvar
         }).catch((error) => {
             console.log("Erro: ", error);
         });
     },
 
-    // Listar todas categorias
+    // Listar todas categorias cadastradas
     async getList(req, res) {
         db.Categoria.findAll().then(categorias => {
             res.render("categoria/categoriaList", {
@@ -26,7 +29,7 @@ module.exports = {
         });
     },
 
-    // Editar categoria
+    // Busca uma categoria específica para editar
     async getUpdate(req, res) {
         await db.Categoria.findByPk(req.params.id).then(ctg => {
             res.render("categoria/categoriaUpdate", {
@@ -37,7 +40,7 @@ module.exports = {
         });
     },
 
-    // Salvar edição
+    // Salvar alterações de uma categoria
     async postUpdate(req, res) {
         await db.Categoria.update(req.body, {
             where: {
@@ -50,7 +53,7 @@ module.exports = {
         });
     },
 
-    // Deletar categoria
+    // Deletar categoria do banco de dados
     async getDelete(req, res) {
         await db.Categoria.destroy({
             where: {
