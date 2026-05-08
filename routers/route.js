@@ -24,12 +24,14 @@ module.exports = route;
 
 //  ======== Rotas públicas (não exigem login) ========
 
-// Página inicial - login
-route.get("/", controllerAluno.getLogin);
+// Página inicial - lista todas as receitas
+route.get("/", controllerReceita.getPagInicial);
 
 // Página filtrada por categoria
-route.get("/public", controllerReceita.getPagInicial);
 route.get("/public/categoria/:id", controllerReceita.getPagInicialPorCat);
+
+// Relatório de habilidades
+route.get("/public/relatorioHabilidades", controllerAluno.getRelat);
 
 // Tela de login
 route.get("/login", controllerAluno.getLogin);
@@ -63,7 +65,7 @@ route.post("/alunoHabilidades", controllerAluno.postHabilidade);
 // Remover alguma habilidade (exige aluno estar logado)
 route.get("/alunoHabilidadeDelete/:habilidade_id", controllerAluno.deleteHabilidade);
 
-//  ======== Receitas ========
+//  ======== Receitas (CRUD - exige aluno estar logado) ========
 route.get("/receitaCreate", controllerReceita.getCreate);
 route.post("/receitaCreate", controllerReceita.postCreate);
 

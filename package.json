@@ -2,7 +2,7 @@
   "name": "projeto1-backend-2026",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -20,7 +20,7 @@
   "dependencies": {
     "express": "^5.2.1",
     "express-handlebars": "^8.0.3",
-    "mongoose": "^9.6.1",
+    "express-session": "^1.19.0",
     "pg": "^8.20.0",
     "sequelize": "^6.37.8"
   }

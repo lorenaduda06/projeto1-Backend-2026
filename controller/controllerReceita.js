@@ -20,6 +20,8 @@ module.exports = {
 
     // Salvar nova receita
     async postCreate(req, res) {
+        const aluno_id = req.session.aluno_id;
+
         // Garante 'categoria_ids' ser um array 
         let categoria_ids = req.body.categoria_ids || [];
         if (!Array.isArray(categoria_ids)) categoria_ids = [categoria_ids];
@@ -42,7 +44,7 @@ module.exports = {
 
             // Associa alunos à receita (cardinalidade: many to many)
             await receita.setAlunos(aluno_ids);
-            res.redirect("/receitaList");
+            res.redirect("/home");
         }).catch((error) => {
             console.log("Erro: ", error);
         });
@@ -69,7 +71,7 @@ module.exports = {
         let cat = await db.Categoria.findAll();
         let alunos = await db.Aluno.findAll({
             where: {
-                tipo: 1
+                tipo: 0
             }
         });
         
@@ -140,11 +142,13 @@ module.exports = {
                 { model: db.Aluno }
             ]
         }).then(receitas => {
-            res.render("publico/receitasPublico", {
+            res.render("publico/receitasPublico", 
+            {
                 categorias: cat.map(ctg => ctg.toJSON()),
                 receitas: receitas.map(rec => rec.toJSON()),
-                layout: "noMenu"
-            });
+            }, 
+            { layout: "noMenu" }
+        );
         }).catch((error) => {
             console.log("Erro: ", error);
         });
@@ -159,12 +163,14 @@ module.exports = {
                 { model: db.Aluno }
             ]
         }).then(receitas => {
-            res.render("publico/receitasPublico", {
+            res.render("publico/receitasPublico", 
+            {
                 categorias: cat.map(ctg => ctg.toJSON()),
                 cat_selecionada: cat_escolhida ? cat_escolhida.toJSON() : null,
                 receitas: receitas.map(rec => rec.toJSON()),
-                layout: "noMenu"
-            });
+            },
+            { layout: "noMenu" }
+        );
         }).catch((error) => {
             console.log("Erro: ", error);
         });

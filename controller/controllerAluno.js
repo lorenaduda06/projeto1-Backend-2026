@@ -24,7 +24,6 @@ module.exports = {
                 // Informações salvas na sessão
                 req.session.login = req.body.email;
                 req.session.aluno_id = alunos[0].dataValues.id;
-
                 req.session.tipo = alunos[0].dataValues.tipo;
 
                 // Informações disponíveis em 'views'
@@ -130,7 +129,7 @@ module.exports = {
             habilidades: todas_hab.map(hab => hab.toJSON()),
 
             // Habilidades que o aluno já tem (com nível)
-            my_hab: aluno.habilidades.map(hab => ({
+            my_hab: aluno.Habilidades.map(hab => ({
                 id: hab.toJSON().id,
                 nome: hab.toJSON().nome,
                 nivel: hab.AlunoHabilidade.nivel
@@ -157,7 +156,7 @@ module.exports = {
         });
     },
 
-    // Remover habilidade do aluno (ver se precisa)
+    // Remover habilidade do aluno
     async deleteHabilidade(req, res) {
         await db.AlunoHabilidade.destroy({
             where: {
@@ -166,6 +165,37 @@ module.exports = {
             }
         }).then(() => {
             res.redirect("/home");
+        }).catch((error) => {
+            console.log("Erro: ", error);
+        });
+    },
+
+    // Relatório público
+    async getRelat(req, res) {
+        let todos_alunos = await db.Aluno.count({ where: { tipo: 0 } });
+
+        db.Habilidade.findAll({
+            include: [{
+                model: db.AlunoHabilidade,
+                attributes: ["nivel"]
+            }]
+        }).then(habilidades => {
+            let relat = habilidades.map(hab => {
+                let dados_aluno_hab = hab.toJSON();
+                let qt = dados_aluno_hab.AlunoHabilidade ? dados_aluno_hab.AlunoHabilidade.length : 0;
+                let distribuicao_por_hab = todos_alunos > 0 ? ((qt / todos_alunos) * 100).toFixed(1) : 0;   // toFixed(1) deixa 1 casa após a vírgula
+
+                return {
+                    nome: dados_aluno_hab.nome,
+                    qt: qt,
+                    distribuicao_por_hab: distribuicao_por_hab
+                }
+            });
+
+            res.render("public/relatorioHabilidades", 
+                { relatorio: relat },
+                { layout: "noMenu" }
+            );
         }).catch((error) => {
             console.log("Erro: ", error);
         });
