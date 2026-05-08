@@ -27,7 +27,7 @@ module.exports = (sequelize, Sequelize) => {
         tipo: {
             type: Sequelize.INTEGER,
             allowNull: false,
-            defaultValue: 2     // 1 -> admin; 2 -> aluno
+            defaultValue: 0     // 1 -> admin; 0 -> aluno
         }
     });
 
