@@ -198,7 +198,7 @@ module.exports = {
                 let dados_aluno_hab = hab.toJSON();
                 
                 // Quantidade de alunos que têm essa habilidade
-                let qt = dados_aluno_hab.Aluno ? dados_aluno_hab.Aluno.length : 0;
+                let qt = dados_aluno_hab.Alunos ? dados_aluno_hab.Alunos.length : 0;
                 let distribuicao_por_hab = todos_alunos > 0 ? ((qt / todos_alunos) * 100).toFixed(1) : 0;   // toFixed(1) deixa 1 casa após a vírgula
 
                 return {
