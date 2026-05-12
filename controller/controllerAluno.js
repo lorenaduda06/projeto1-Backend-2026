@@ -141,7 +141,7 @@ module.exports = {
             my_hab: aluno.Habilidades.map(hab => ({
                 id: hab.toJSON().id,
                 nome: hab.toJSON().nome,
-                nivel: hab.AlunoHabilidade.nivel
+                nivel: hab.aluno_habilidade.nivel
             }))
         });
     },
@@ -190,11 +190,7 @@ module.exports = {
 
         db.Habilidade.findAll({
             include: [{
-                model: db.Aluno, as: "Alunos", atributes: []
-
-                // CONFERIR ESSA MUDANÇA
-                //model: db.AlunoHabilidade,
-                //attributes: ["nivel"]
+                model: db.Aluno, as: "Alunos", attributes: []
             }]
         }).then(habilidades => {
             // Calcula para cada habilidade a proproção de alunos relacionados a ela
@@ -202,7 +198,7 @@ module.exports = {
                 let dados_aluno_hab = hab.toJSON();
                 
                 // Quantidade de alunos que têm essa habilidade
-                let qt = dados_aluno_hab.AlunoHabilidade ? dados_aluno_hab.AlunoHabilidade.length : 0;
+                let qt = dados_aluno_hab.Aluno ? dados_aluno_hab.Aluno.length : 0;
                 let distribuicao_por_hab = todos_alunos > 0 ? ((qt / todos_alunos) * 100).toFixed(1) : 0;   // toFixed(1) deixa 1 casa após a vírgula
 
                 return {
