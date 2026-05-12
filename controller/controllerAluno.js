@@ -129,7 +129,7 @@ module.exports = {
         // Busca o aluno com suas habilidades
         let aluno = await db.Aluno.findByPk(req.session.aluno_id, {
             include: [{
-                model: db.Habilidade       // Inclui as habilidades relacionadas a este aluno
+                model: db.Habilidade, as: "Habilidades"       // Inclui as habilidades relacionadas a este aluno
             }]
         });
 
@@ -190,8 +190,11 @@ module.exports = {
 
         db.Habilidade.findAll({
             include: [{
-                model: db.AlunoHabilidade,
-                attributes: ["nivel"]
+                model: db.Aluno, as: "Alunos", atributes: []
+
+                // CONFERIR ESSA MUDANÇA
+                //model: db.AlunoHabilidade,
+                //attributes: ["nivel"]
             }]
         }).then(habilidades => {
             // Calcula para cada habilidade a proproção de alunos relacionados a ela

@@ -38,34 +38,40 @@ db.AlunoHabilidade = require("../models/relational/alunoHabilidade.js")(sequeliz
 // 1) N:N Aluno e Habilidade
 db.Aluno.belongsToMany(db.Habilidade, {
     through: db.AlunoHabilidade,
-    foreignKey: "aluno_id"
+    foreignKey: "aluno_id",
+    as: "Habilidades"
 });
 
 db.Habilidade.belongsToMany(db.Aluno, {
     through: db.AlunoHabilidade,
-    foreignKey: "habilidade_id"
+    foreignKey: "habilidade_id",
+    as: "Alunos"
 });
 
 // 2) N:N Receita e Categoria
 db.Receita.belongsToMany(db.Categoria, {
     through: "receita_categorias",
-    foreignKey: "receita_id"
+    foreignKey: "receita_id",
+    as: "Categorias"
 });
 
 db.Categoria.belongsToMany(db.Receita, {
     through: "receita_categorias",
-    foreignKey: "categoria_id"
+    foreignKey: "categoria_id",
+    as: "Receitas",
 });
 
 // 3) N:N Aluno e Receita
 db.Receita.belongsToMany(db.Aluno, {
     through: "receita_alunos",
-    foreignKey: "receita_id"
+    foreignKey: "receita_id",
+    as: "Alunos"
 });
 
 db.Aluno.belongsToMany(db.Receita, {
     through: "receita_alunos",
-    foreignKey: "aluno_id"
+    foreignKey: "aluno_id",
+    as: "Receitas"
 });
 
 module.exports = db;

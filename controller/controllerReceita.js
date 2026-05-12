@@ -62,8 +62,8 @@ module.exports = {
     async getList(req, res) {
         db.Receita.findAll({
             include: [
-                { model: db.Aluno, where: { id: req.session.aluno_id }},    // Lista apenas receitas do aluno logado
-                { model: db.Categoria }
+                { model: db.Aluno, as: "Alunos", where: { id: req.session.aluno_id }},    // Lista apenas receitas do aluno logado
+                { model: db.Categoria, as: "Categorias" }
             ]
         }).then(receitas => {
             res.render("receita/receitaList", {
@@ -88,8 +88,8 @@ module.exports = {
         
         await db.Receita.findByPk(req.params.id, {
             include: [
-                { model: db.Aluno },
-                { model: db.Categoria }
+                { model: db.Aluno, as: "Alunos" },
+                { model: db.Categoria, as: "Categorias" }
             ]
         }).then(receita => {
             res.render("receita/receitaUpdate", {
@@ -132,7 +132,7 @@ module.exports = {
     async getDelete(req, res) {
         await db.Receita.findByPk(req.params.id, {
             include: [
-                { model: db.Aluno }
+                { model: db.Aluno, as: "Alunos" }
             ]
         }).then(async(receita) => {
             // Remove todas associações com categorias
@@ -159,8 +159,8 @@ module.exports = {
         // Busca todas receitas com seus dados completos
         db.Receita.findAll({
             include: [
-                { model: db.Categoria },
-                { model: db.Aluno }
+                { model: db.Categoria, as: "Categorias" },
+                { model: db.Aluno, as: "Alunos" }
             ]
         }).then(receitas => {
             res.render("publico/receitasPublico", 
@@ -186,8 +186,8 @@ module.exports = {
         // Busca apenas receitas da categoria selecionada
         db.Receita.findAll({
             include: [
-                { model: db.Categoria, where: {id: req.params.id} },
-                { model: db.Aluno }
+                { model: db.Categoria, as: "Categorias", where: { id: req.params.id } },
+                { model: db.Aluno, as: "Alunos" }
             ]
         }).then(receitas => {
             res.render("publico/receitasPublico", 
