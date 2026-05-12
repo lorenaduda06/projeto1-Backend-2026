@@ -9,10 +9,10 @@ const storage = multer.diskStorage({
 });
 const upload = multer({ storage });
 
-const controllerAluno = require("../controller/controllerAluno");
-const controllerReceita = require("../controller/controllerReceita");
-const controllerCategoria = require("../controller/controllerCategoria");
-const controllerHabilidade = require("../controller/controllerHabilidade");
+const controllerAluno = require("../controllers/controllerAluno");
+const controllerReceita = require("../controllers/controllerReceita");
+const controllerCategoria = require("../controllers/controllerCategoria");
+const controllerHabilidade = require("../controllers/controllerHabilidade");
 
 const db = require("../config/db");
 
