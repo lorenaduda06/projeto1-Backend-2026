@@ -37,7 +37,7 @@ Sistema web desenvolvido como projeto da disciplina **Programação Web Back-End
 ---
 
 ## 📁 Estrutura do Projeto
-
+```
 projeto-receitas/
 ├── 📄 app.js # Configuração principal do servidor
 ├── 📄 package.json # Dependências do projeto
@@ -98,7 +98,7 @@ projeto-receitas/
 │ └── 📄 middlewares.js
 │
 └── 📁 node_modules/
-
+```
 
 ---
 
