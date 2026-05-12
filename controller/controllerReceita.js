@@ -43,7 +43,7 @@ module.exports = {
         db.Receita.create({
             nome: req.body.nome,
             descricao: req.body.descricao,
-            link_externo: req.body.link_externo
+            link_externo: req.file ? req.file.filename : null
         }).then(async (receita) => {
             // Cria os relacionamentos
 
@@ -113,7 +113,7 @@ module.exports = {
         await db.Receita.update({
             nome: req.body.nome,
             descricao: req.body.descricao,
-            link_externo: req.body.link_externo
+            link_externo: req.file ? req.file.filename : null
         }, {
             where: {
                 id: req.body.id

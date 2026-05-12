@@ -1,6 +1,14 @@
 const express = require("express");
 const route = express.Router();
 
+// Instalação e configuração do multer
+const multer = require("multer");
+const storage = multer.diskStorage({
+    destination: "public/uploads/",
+    filename: (req, file, cb) => cb(null, Date.now() + "-" + file.originalname)
+});
+const upload = multer({ storage });
+
 const controllerAluno = require("../controller/controllerAluno");
 const controllerReceita = require("../controller/controllerReceita");
 const controllerCategoria = require("../controller/controllerCategoria");
@@ -67,12 +75,12 @@ route.get("/alunoHabilidadeDelete/:habilidade_id", controllerAluno.deleteHabilid
 
 //  ======== Receitas (CRUD - exige aluno estar logado) ========
 route.get("/receitaCreate", controllerReceita.getCreate);
-route.post("/receitaCreate", controllerReceita.postCreate);
+route.post("/receitaCreate", upload.single("imagem"), controllerReceita.postCreate);
 
 route.get("/receitaList", controllerReceita.getList);
 
 route.get("/receitaUpdate/:id", controllerReceita.getUpdate);
-route.post("/receitaUpdate", controllerReceita.postUpdate);
+route.post("/receitaUpdate", upload.single("imagem"), controllerReceita.postUpdate);
 
 route.get("/receitaDelete/:id", controllerReceita.getDelete);
 
