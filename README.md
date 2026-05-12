@@ -1,4 +1,4 @@
-# 🍳 Sistema de Portfólio de Receitas Culinárias
+# 🍪 Sistema de Portfólio de Receitas Culinárias
 
 ## 👥 Equipe de Desenvolvimento
 
