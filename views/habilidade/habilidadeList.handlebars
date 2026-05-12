@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>Lista de Habilidades</h2>
+<br>
+<table border="1" width="60%">
+    <tr>
+        <th>ID</th>
+        <th>Nome</th>
+        <th>Ações</th>
+    </tr>
+    {{#each habilidades}}
+    <tr>
+        <td>{{id}}</td>
+        <td>{{nome}}</td>
+        <td>
+            <a href="/habilidadeUpdate/{{id}}">Editar</a> |
+            <a href="/habilidadeDelete/{{id}}" onclick="return confirm('Tem certeza?')">Excluir</a>
+        </td>
+    </tr>
+    {{/each}}
+</table>
+<br>
+<a href="/habilidadeCreate"><button>Nova Habilidade</button></a>
+</body>
+</html>

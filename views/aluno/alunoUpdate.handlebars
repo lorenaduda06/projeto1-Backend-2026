@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>Editar Aluno</h2>
+<br>
+<form action="/alunoUpdate/{{aluno.id}}" method="post">
+    <table border="0">
+        <tr>
+            <td>Login:</td>
+            <td><input type="text" name="login" value="{{aluno.login}}" required></td>
+        </tr>
+        <tr>
+            <td>Senha:</td>
+            <td><input type="password" name="senha" value="{{aluno.senha}}" required></td>
+        </tr>
+        <tr>
+            <td>Tipo:</td>
+            <td>
+                <select name="tipo">
+                    <option value="0" {{#ifEqual aluno.tipo 0}}selected{{/ifEqual}}>Aluno</option>
+                    <option value="1" {{#ifEqual aluno.tipo 1}}selected{{/ifEqual}}>Administrador</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2" align="center">
+                <input type="submit" value="Atualizar">
+            </td>
+        </tr>
+    </table>
+</form>
+<br>
+<form action="/alunoDelete/{{aluno.id}}" method="post">
+    <input type="submit" value="Excluir Aluno">
+</form>
+</body>
+</html>

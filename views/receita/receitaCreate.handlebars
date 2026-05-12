@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>Cadastrar Nova Receita</h2>
+<br>
+<form action="/receitaCreate" method="post">
+    <table border="0">
+        <tr>
+            <td>Nome da Receita:</td>
+            <td><input type="text" name="nome" size="50" required></td>
+        </tr>
+        <tr>
+            <td>Descrição:</td>
+            <td><textarea name="descricao" rows="4" cols="50" required></textarea></td>
+        </tr>
+        <tr>
+            <td>Link Externo:</td>
+            <td><input type="url" name="linkExterno" size="50"></td>
+        </tr>
+    </table>
+    
+    <br>
+    <h3>Categorias da Receita</h3>
+    <table border="1">
+        <tr>
+            {{#each categorias}}
+            <td>
+                <input type="checkbox" name="categorias" value="{{id}}"> {{nome}}
+            </td>
+            {{/each}}
+        </tr>
+    </table>
+    
+    <br>
+    <h3>Outros Alunos Responsáveis</h3>
+    <table border="1">
+        <tr>
+            {{#each outrosAlunos}}
+            <td>
+                <input type="checkbox" name="responsaveis" value="{{id}}"> {{login}}
+            </td>
+            {{/each}}
+        </tr>
+    </table>
+    
+    <br>
+    <input type="submit" value="Cadastrar Receita">
+</form>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <center>
+        <h1>Portfólio de Receitas Culinárias</h1>
+        
+        {{#if usuarioLogado}}
+        <br>
+        <a href="/home">Home</a> |
+        <a href="/receitaList">Minhas Receitas</a> |
+        <a href="/receitaCreate">Nova Receita</a> |
+        <a href="/categoriaList">Categorias</a> |
+        <a href="/habilidadeList">Habilidades</a> |
+        <a href="/alunoHabilidades">Minhas Habilidades</a> |
+        <a href="/alunoList">Alunos</a> |
+        <a href="/logout">Sair</a>
+        <br><br>
+        {{/if}}
+        
+        <hr>
+        
+        {{#if error}}
+        <p style="color:red">Erro: {{error}}</p>
+        {{/if}}
+        
+        {{#if success}}
+        <p style="color:green">Sucesso: {{success}}</p>
+        {{/if}}
+        
+        {{{body}}}
+        
+        <hr>
+        <br>
+        <small>Sistema de Portfólio de Receitas - UTFPR</small>
+    </center>
+</body>
+</html>

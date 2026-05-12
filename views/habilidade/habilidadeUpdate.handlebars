@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>Editar Habilidade</h2>
+<br>
+<form action="/habilidadeUpdate/{{habilidade.id}}" method="post">
+    <table border="0">
+        <tr>
+            <td>Nome da Habilidade:</td>
+            <td><input type="text" name="nome" value="{{habilidade.nome}}" size="40" required></td>
+        </tr>
+        <tr>
+            <td colspan="2" align="center">
+                <input type="submit" value="Atualizar">
+            </td>
+        </tr>
+    </table>
+</form>
+<br>
+<form action="/habilidadeDelete/{{habilidade.id}}" method="post">
+    <input type="submit" value="Excluir Habilidade">
+</form>
+</body>
+</html>

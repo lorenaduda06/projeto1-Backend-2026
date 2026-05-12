@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>Receitas por Categoria</h2>
+<br>
+
+<form action="/publico/receitasPorCategoria" method="post">
+    <table border="0">
+        <tr>
+            <td>Escolha uma categoria:</b></td>
+            <td>
+                <select name="categoriaId" required>
+                    <option value="">Selecione...</option>
+                    {{#each categorias}}
+                    <option value="{{id}}">{{nome}}</option>
+                    {{/each}}
+                </select>
+            </center>
+        </tr>
+        <tr>
+            <td colspan="2" align="center">
+                <input type="submit" value="Buscar Receitas">
+            </center>
+        </tr>
+    </table>
+</form>
+
+<br><hr><br>
+
+{{#if receitas}}
+    <h3>Receitas encontradas:</h3>
+    <br>
+    {{#each receitas}}
+    <table border="1" width="80%">
+        <tr>
+            <th width="30%">Nome:</th>
+            <td>{{nome}}</center>
+        </tr>
+        <tr>
+            <th>Descrição:</th>
+            <td>{{descricao}}</center>
+        </tr>
+        <tr>
+            <th>Link Externo:</th>
+            <td><a href="{{linkExterno}}" target="_blank">{{linkExterno}}</a></center>
+        </tr>
+        <tr>
+            <th>Categorias:</th>
+            <td>{{categorias}}</center>
+        </tr>
+        <tr>
+            <th>Responsáveis:</th>
+            <td>{{responsaveis}}</center>
+        </tr>
+    </table>
+    <br><br>
+    {{/each}}
+{{else}}
+    {{#if buscado}}
+        <p>Nenhuma receita encontrada para esta categoria.</p>
+    {{/if}}
+{{/if}}
+
+<br>
+<a href="/publico/receitas">Voltar para todas as receitas</a>
+</body>
+</html>

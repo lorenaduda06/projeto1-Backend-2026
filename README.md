@@ -92,6 +92,7 @@ projeto-receitas/
 │
 │ └── 📁 publico/
 │ ├── 📄 receitasPublico.handlebars
+│ ├── 📄 receitasPorCategoria.handlebars
 │ └── 📄 relatorioHabilidades.handlebars
 │
 ├── 📁 middlewares/
