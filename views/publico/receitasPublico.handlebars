@@ -13,28 +13,38 @@
         {{#each receitas}}
             <table border="1" width="80%">
                 <tr>
-                    <th width="30%">Nome:</th>
+                    <th>Nome:</th>
                     <td>{{nome}}</td>
                 </tr>
-        
+
                 <tr>
                     <th>Descrição:</th>
                     <td>{{descricao}}</td>
                 </tr>
-        
+
                 <tr>
                     <th>Link Externo:</th>
-                    <td><a href="{{linkExterno}}" target="_blank">{{linkExterno}}</a></td>
+                    <td><a href="{{link_externo}}" target="_blank">{{link_externo}}</a></td>
                 </tr>
-        
+
                 <tr>
                     <th>Categorias:</th>
-                    <td>{{categorias}}</td>
+                    <td>
+                        {{#each Categorias}}
+                            {{nome}}
+                            <br>
+                        {{/each}}
+                    </td>
                 </tr>
-        
+            
                 <tr>
                     <th>Responsáveis:</th>
-                    <td>{{responsaveis}}</td>
+                    <td>
+                        {{#each Alunos}}
+                            {{nome}}
+                            <br>
+                         {{/each}}
+                    </td>
                 </tr>
             </table>
             <br><br>

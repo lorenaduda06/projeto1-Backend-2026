@@ -8,50 +8,39 @@
 <body>
     <h2>Editar Receita</h2>
     <br>
-    <form action="/receitaUpdate/{{receita.id}}" method="post" enctype="multipart/form-data">
-        <table border="0">
-            <tr>
-                <td>Nome da Receita:</td>
-                <td><input type="text" name="nome" value="{{receita.nome}}" size="50" required></td>
-            </tr>
-        
-            <tr>
-                <td>Descrição:</td>
-                <td><textarea name="descricao" rows="4" cols="50" required>{{receita.descricao}}</textarea></td>
-            </tr>
-        
-            <tr>
-                <td>Link Externo:</td>
-                <td><input type="url" name="link_externo" value="{{receita.link_externo}}" size="50"></td>
-            </tr>
 
-            <tr>
-                <td>Imagem da Receita:</td>
-                <td><input type="file" name="imagem" accept="image/*"></td>
-                <tr>
-                    <small>Deixe em branco para manter a imagem atual</small>
-                </td>
-            </tr>
-        </table>
+    <form action="/receitaUpdate" method="post" enctype="multipart/form-data">
+        <input type="hidden" name="id" value={{receita.id}}>
+        Nome: <input type="text" name="nome" value="{{receita.nome}}">
+        <br><br>
     
+        Descrição: <textarea name="descricao" rows="4" cols="50">{{receita.descricao}}</textarea>
+        <br><br>
+    
+        Link Externo: <input type="text" name="link_externo" value="{{receita.link_externo}}">
+        <br><br>
+    
+        Imagem: <input type="file" name="imagem" accept="image/*">
+        <br><br>
+
+        <b>Categorias:</b><br>
+        {{#each categorias}}
+            <input type="checkbox" name="categoria_ids" value="{{id}}"> {{nome}}<br>
+        {{/each}}
+
         <br>
-        <h3>Categorias da Receita</h3>
-        <table border="1">
-            <tr>
-                {{#each categorias}}
-                <td>
-                    <input type="checkbox" name="categorias" value="{{id}}" {{#ifChecked id receita.categoriasIds}}checked{{/ifChecked}}> {{nome}}
-                </td>
-                {{/each}}
-            </tr>
-        </table>
-    
+        <b>Alunos responsáveis:</b><br>
+        {{#each alunos}}
+            <input type="checkbox" name="aluno_ids" value="{{id}}"> {{nome}}<br>
+        {{/each}}
+
         <br>
         <input type="submit" value="Atualizar Receita">
     </form>
+
     <br>
-    <form action="/receitaDelete/{{receita.id}}" method="post">
-        <input type="submit" value="Excluir Receita">
-    </form>
+    <a href="/receitaDelete/{{receita.id}}">
+        <button>Excluir</button>
+    </a>
 </body>
 </html>

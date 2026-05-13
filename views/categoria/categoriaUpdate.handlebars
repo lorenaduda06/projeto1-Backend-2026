@@ -8,23 +8,17 @@
 <body>
     <h2>Editar Categoria</h2>
     <br>
-    <form action="/categoriaUpdate/{{categoria.id}}" method="post">
-        <table border="0">
-            <tr>
-                <td>Nome da Categoria:</td>
-                <td><input type="text" name="nome" value="{{categoria.nome}}" size="40" required></td>
-            </tr>
-        
-            <tr>
-                <td colspan="2" align="center">
-                    <input type="submit" value="Atualizar">
-                </td>
-            </table>
-        </table>
+
+    <form action="/categoriaUpdate" method="post">
+        <input type="hidden" name="id" value={{categoria.id}}>
+        Nome: <input type="text" name="nome" value="{{categoria.nome}}">
+        <br><br>
+        <input type="submit" value="Atualizar">
     </form>
+
     <br>
-    <form action="/categoriaDelete/{{categoria.id}}" method="post">
-        <input type="submit" value="Excluir Categoria">
-    </form>
+    <a href="/categoriaDelete/{{categoria.id}}">
+        <button>Excluir</button>
+    </a>
 </body>
 </html>

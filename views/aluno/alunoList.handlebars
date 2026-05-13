@@ -13,7 +13,10 @@
             <th>ID</th>
             <th>Email</th>
             <th>Tipo</th>
-            <th>Ações</th>
+
+            {{#if admin}}
+                <th>Ações</th>
+            {{/if}}
         </tr>
     
         {{#each alunos}}
@@ -21,10 +24,13 @@
                 <td>{{id}}</td>
                 <td>{{email}}</td>
                 <td>{{#if tipo}}Admin{{else}}Aluno{{/if}}</td>
-                <td>
-                    <a href="/alunoUpdate/{{id}}">Editar</a> |
-                    <a href="/alunoDelete/{{id}}" onclick="return confirm('Tem certeza?')">Excluir</a>
-                </td>
+
+                {{#if ../admin}}
+                    <td>
+                        <a href="/alunoUpdate/{{id}}">Editar</a> |
+                        <a href="/alunoDelete/{{id}}" onclick="return confirm('Tem certeza?')">Excluir</a>
+                    </td>
+                {{/if}}
             </tr>
         {{/each}}
     </table>

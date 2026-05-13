@@ -57,6 +57,10 @@ module.exports = {
         let categoria_ids = req.body.categoria_ids || [];
         if (!Array.isArray(categoria_ids)) categoria_ids = [categoria_ids];
 
+        if (categoria_ids.length === 0) {
+            return res.redirect("/receitaCreate");
+        }
+
         // Garante 'aluno_ids' ser um array 
         let aluno_ids = req.body.aluno_ids || [];
         if (!Array.isArray(aluno_ids)) aluno_ids = [aluno_ids];
@@ -133,6 +137,10 @@ module.exports = {
     async postUpdate(req, res) {
         let categoria_ids = req.body.categoria_ids || [];
         if (!Array.isArray(categoria_ids)) categoria_ids = [categoria_ids];
+
+        if (categoria_ids.length === 0) {
+            return res.redirect("/receitaUpdate/" + req.body.id);
+        }
 
         let aluno_ids = req.body.aluno_ids || [];
         if (!Array.isArray(aluno_ids)) aluno_ids = [aluno_ids];

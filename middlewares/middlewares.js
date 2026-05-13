@@ -20,6 +20,19 @@ module.exports = {
                 res.locals.admin = true;
             }
 
+            // Rotas exclusivas do admin — bloqueia aluno comum
+            const rotasAdmin = [
+                "/alunoCreate", "/alunoList", "/alunoUpdate", "/alunoDelete",
+                "/categoriaCreate", "/categoriaUpdate", "/categoriaDelete",
+                "/habilidadeCreate", "/habilidadeUpdate", "/habilidadeDelete"
+            ];
+
+            const ehRotaAdmin = rotasAdmin.some(rota => req.url.startsWith(rota));
+
+            if (ehRotaAdmin && req.session.tipo !== 1) {
+                return res.redirect("/home");
+            }
+
             // Usuário logado pode acessar qualquer rota
             return next();
         }
@@ -35,8 +48,14 @@ module.exports = {
         // Envio do formulário de login (POST) - acessível
         if ((req.url === "/login") && (req.method === "POST")) return next();
 
+        // Relatório público
+        if (req.url === "/public/relatorioHabilidades" && req.method === "GET") return next();
+
+        // Página pública de receitas
+        if (req.url === "/receitas" && req.method === "GET") return next();
+
         // Qualquer rota que comece com "/public/" - acessível (ex: receitas públicas, relatório)
-        if (req.url.startsWith("/public/")) return next();
+        if (req.url.startsWith("/public/categoria/")) return next();
 
         // Por padrão, qualquer rota sem login, redireciona para página de login
         res.redirect("/");

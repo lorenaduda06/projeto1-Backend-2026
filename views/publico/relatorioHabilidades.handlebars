@@ -13,13 +13,15 @@
         <table border="1" width="60%">
             <tr>
                 <th>Habilidade</th>
-                <th>Proporção de Alunos (%)</th>
+                <th>Qtd Alunos</th>
+                <th>Proporção (%)</th>
             </tr>
-        
+    
             {{#each relatorio}}
                 <tr>
-                    <td>{{habilidade}}</td>
-                    <td>{{proporcao}}%</td>
+                    <td>{{nome}}</td>
+                    <td>{{qt}}</td>
+                    <td>{{distribuicao_por_hab}}%</td>
                 </tr>
             {{/each}}
         </table>

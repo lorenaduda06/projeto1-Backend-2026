@@ -47,9 +47,9 @@
         <h3>Outros Alunos Responsáveis</h3>
         <table border="1">
             <tr>
-                {{#each outrosAlunos}}
+                {{#each alunos}}
                     <td>
-                        <input type="checkbox" name="aluno_ids" value="{{id}}"> {{login}}
+                        <input type="checkbox" name="aluno_ids" value="{{id}}"> {{nome}}
                     </td>
                 {{/each}}
             </tr>

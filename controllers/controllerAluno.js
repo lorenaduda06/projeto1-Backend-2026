@@ -205,9 +205,10 @@ module.exports = {
 
         db.Habilidade.findAll({
             include: [{
-                model: db.Aluno, as: "Alunos", attributes: []
+                model: db.Aluno, as: "Alunos"
             }]
         }).then(habilidades => {
+             console.log("habilidades:", JSON.stringify(habilidades, null, 2));
             // Calcula para cada habilidade a proproção de alunos relacionados a ela
             let relat = habilidades.map(hab => {
                 let dados_aluno_hab = hab.toJSON();
@@ -224,10 +225,10 @@ module.exports = {
             });
 
             // O relatório é renderizado com página pública (sem login)
-            res.render("public/relatorioHabilidades", 
-            {
+            res.render("publico/relatorioHabilidades", 
+            { 
                 relatorio: relat,
-                layout: "noMenu" 
+                layout: "noMenu"
             });
         }).catch((error) => {
             console.log("Erro: ", error);

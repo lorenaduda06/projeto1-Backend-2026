@@ -30,9 +30,26 @@ Sistema web desenvolvido como projeto da disciplina **Programação Web Back-End
 | **Express** | Framework web |
 | **Sequelize** | ORM para PostgreSQL |
 | **PostgreSQL** | Banco de dados relacional |
+| **MongoDB Atlas** | Banco de dados NoSQL (comentários) |
+| **Mongoose** | ODM para MongoDB |
 | **Express-Handlebars** | Template engine |
 | **Express-Session** | Gerenciamento de sessão |
 | **Multer** | Upload de imagens |
+
+---
+
+## 🗄️ Bancos de Dados
+
+### PostgreSQL (Dados Estruturais)
+- **Alunos**: usuários do sistema (admin e comuns)
+- **Receitas**: informações das receitas
+- **Categorias**: classificação das receitas
+- **Habilidades**: habilidades culinárias
+- **Relacionamentos N:N**: tabelas pivô para ligar receitas a categorias e alunos
+
+### MongoDB Atlas (Dados Não Estruturados)
+- **Comentários**: armazenamento de comentários feitos pelos usuários sobre as receitas
+- **Vantagem**: esquema flexível, não há necessidade de alterar estrutura para novos campos
 
 ---
 
@@ -43,60 +60,72 @@ projeto-receitas/
 ├── 📄 package.json # Dependências do projeto
 │
 ├── 📁 config/
-│ └── 📄 db.js # Configuração do banco e relacionamentos
+│ ├── 📄 db.js # Configuração do banco e relacionamentos
+│ └── 📄 db_mongoose.js              # Conexão MongoDB Atlas
 │
 ├── 📁 controllers/
 │ ├── 📄 controllerAluno.js
 │ ├── 📄 controllerCategoria.js
 │ ├── 📄 controllerHabilidade.js
-│ └── 📄 controllerReceita.js
+│ ├── 📄 controllerReceita.js
+│ └── 📄 controllerComentario.js     # CRUD comentários (MongoDB)
 │
 ├── 📁 models/
 │ └── 📁 relational/
-│ ├── 📄 aluno.js
-│ ├── 📄 alunoHabilidade.js
-│ ├── 📄 categoria.js
-│ ├── 📄 habilidade.js
-│ └── 📄 receita.js
+│     ├── 📄 aluno.js
+│     ├── 📄 alunoHabilidade.js
+│     ├── 📄 categoria.js
+│     ├── 📄 habilidade.js
+│     └── 📄 receita.js
 │
 ├── 📁 routes/
-│ └── 📄 route.js # Definição de todas as rotas
+│   └── 📄 route.js # Definição de todas as rotas
 │
 ├── 📁 views/
-│ ├── 📁 layouts/
-│ ├── 📄 home.handlebars
-│ ├── 📄 login.handlebars
-│ ├── 📄 main.handlebars
-│ └── 📄 noMenu.handlebars
-│
-│ ├── 📁 aluno/
-│ ├── 📄 alunoCreate.handlebars
-│ ├── 📄 alunoUpdate.handlebars
-│ ├── 📄 alunoList.handlebars
-│ └── 📄 alunoHabilidades.handlebars
-│
-│ ├── 📁 categoria/
-│ ├── 📄 categoriaCreate.handlebars
-│ ├── 📄 categoriaUpdate.handlebars
-│ └── 📄 categoriaList.handlebars
-│
-│ ├── 📁 habilidade/
-│ ├── 📄 habilidadeCreate.handlebars
-│ ├── 📄 habilidadeUpdate.handlebars
-│ └── 📄 habilidadeList.handlebars
-│
-│ ├── 📁 receita/
-│ ├── 📄 receitaCreate.handlebars
-│ ├── 📄 receitaUpdate.handlebars
-│ └── 📄 receitaList.handlebars
-│
-│ └── 📁 publico/
-│ ├── 📄 receitasPublico.handlebars
-│ ├── 📄 receitasPorCategoria.handlebars
-│ └── 📄 relatorioHabilidades.handlebars
+│   ├── 📁 layouts/
+│   │   ├── 📄 main.handlebars
+│   │   └── 📄 noMenu.handlebars
+│   │
+│   ├── 📄 home.handlebars 
+│   ├── 📄 login.handlebars
+│   │
+│   ├── 📁 aluno/
+│   │   ├── 📄 alunoCreate.handlebars
+│   │   ├── 📄 alunoUpdate.handlebars
+│   │   ├── 📄 alunoList.handlebars
+│   │   └── 📄 alunoHabilidades.handlebars
+│   │
+│   ├── 📁 categoria/
+│   │   ├── 📄 categoriaCreate.handlebars
+│   │   ├── 📄 categoriaUpdate.handlebars
+│   │   └── 📄 categoriaList.handlebars
+│   │
+│   ├── 📁 habilidade/
+│   │   ├── 📄 habilidadeCreate.handlebars
+│   │   ├── 📄 habilidadeUpdate.handlebars
+│   │   └── 📄 habilidadeList.handlebars
+│   │
+│   ├── 📁 receita/
+│   │   ├── 📄 receitaCreate.handlebars
+│   │   ├── 📄 receitaUpdate.handlebars
+│   │   └── 📄 receitaList.handlebars
+│   │
+│   ├── 📁 comentario/
+│   │   ├── 📄 comentarioCreate.handlebars
+│   │   └── 📄 comentarioList.handlebars
+│   │
+│   │
+│   │
+│   └── 📁 publico/
+│       ├── 📄 receitasPublico.handlebars
+│       ├── 📄 receitasPorCategoria.handlebars
+│       └── 📄 relatorioHabilidades.handlebars
 │
 ├── 📁 middlewares/
-│ └── 📄 middlewares.js
+│   └── 📄 middlewares.js              # Log e controle de sessão
+│
+└── 📁 public/
+│   └── 📁 uploads/                    # Imagens enviadas das receitas
 │
 └── 📁 node_modules/
 ```
@@ -131,6 +160,7 @@ projeto-receitas/
 - Node.js (v22+)
 - PostgreSQL (v17+)
 - pgAdmin (opcional)
+- Conta no MongoDB Atlas (gratuita)
 
 ### Passo a Passo
 
@@ -152,7 +182,11 @@ const sequelize = new Sequelize("receitasweb_db", "postgres", "sua_senha", {
     dialect: "postgres"
 });
 
-# 5. Crie as tabelas no banco
+# 5. Configure o MongoDB Atlas no arquivo config/db_mongoose.js
+# Substitua pela sua string de conexão
+connection: "mongodb+srv://usuario:senha@cluster0.xxxxx.mongodb.net/"
+
+# 6. Crie as tabelas no banco
 ## Em route.js mantenha decomentado apenas o trecho:
 db.sequelize.sync({ force: true }).then(() => {
     console.log("Tabelas criadas com sucesso!");
@@ -161,7 +195,7 @@ db.sequelize.sync({ force: true }).then(() => {
 ## E execute o servidor
 node app.js
 
-# 6. Depois, pare a execução do servidor (ctrl + C) para criar o admin (primeiro cadastro do sistema)
+# 7. Depois, pare a execução do servidor (ctrl + C) para criar o admin (primeiro cadastro do sistema)
 ## Em route.js mantenha descomentado apenas o trecho:
 db.Aluno.create({ nome: "Administrador", email: "admin@gmail.com", senha: "1234", tipo: 1 });
 

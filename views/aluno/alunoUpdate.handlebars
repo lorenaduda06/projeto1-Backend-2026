@@ -8,39 +8,30 @@
 <body>
     <h2>Editar Aluno</h2>
     <br>
-    <form action="/alunoUpdate/{{aluno.id}}" method="post">
-        <table border="0">
-            <tr>
-                <td>Novo nome:</td>
-                <td><input type="text" name="nome" value="{{aluno.nome}}" required></td>
-            </tr>
 
-            <tr>
-                <td>Nova senha:</td>
-                <td><input type="password" name="senha" value="{{aluno.senha}}" required></td>
-            </tr>
-
-            <tr>
-                <td>Tipo:</td>
-                <td>
-                    <select name="tipo">
-                        <option value="0" {{#ifEqual aluno.tipo 0}}selected{{/ifEqual}}>Aluno</option>
-                        <option value="1" {{#ifEqual aluno.tipo 1}}selected{{/ifEqual}}>Administrador</option>
-                    </select>
-                </td>
-            </tr>
-
-            <tr>
-                <td colspan="2" align="center">
-                    <input type="submit" value="Atualizar">
-                </td>
-            </tr>
-        </table>
-    </form>
-    <br>
+    <form action="/alunoUpdate" method="post">
+        <input type="hidden" name="id" value={{aluno.id}}>
+        Nome: <input type="text" name="nome" value="{{aluno.nome}}">
+        <br><br>
     
-    <form action="/alunoDelete/{{aluno.id}}" method="post">
-        <input type="submit" value="Excluir Aluno">
+        Email: <input type="text" name="email" value="{{aluno.email}}">
+        <br><br>
+    
+        Senha: <input type="password" name="senha" value="{{aluno.senha}}">
+        <br><br>
+    
+        Tipo:
+        <select name="tipo">
+            <option value="0">Aluno</option>
+            <option value="1">Administrador</option>
+        </select>
+        <br><br>
+        <input type="submit" value="Atualizar">
     </form>
+
+    <br>
+    <a href="/alunoDelete/{{aluno.id}}">
+        <button>Excluir</button>
+    </a>
 </body>
 </html>
