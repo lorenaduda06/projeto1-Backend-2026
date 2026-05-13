@@ -1,35 +1,42 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Portfólio de Receitas Culinárias</title>
 </head>
 <body>
     <center>
         <h1>Portfólio de Receitas Culinárias</h1>
         
-        {{#if usuarioLogado}}
-        <br>
-        <a href="/home">Home</a> |
-        <a href="/receitaList">Minhas Receitas</a> |
-        <a href="/receitaCreate">Nova Receita</a> |
-        <a href="/categoriaList">Categorias</a> |
-        <a href="/habilidadeList">Habilidades</a> |
-        <a href="/alunoHabilidades">Minhas Habilidades</a> |
-        <a href="/alunoList">Alunos</a> |
-        <a href="/logout">Sair</a>
-        <br><br>
+        {{#if login}}
+            <br>
+            <a href="/home">Home</a> |
+            <a href="/receitaList">Minhas Receitas</a> |
+            <a href="/receitaCreate">Nova Receita</a> |
+            <a href="/categoriaList">Categorias</a> |
+            <a href="/habilidadeList">Habilidades</a> |
+            <a href="/alunoHabilidades">Minhas Habilidades</a> |
+
+            {{#if admin}}
+                <a href="/alunoCreate">Cadastrar Aluno</a> |
+                <a href="/alunoList">Listar Alunos</a> |
+            {{else}}
+                <a href="/alunoList">Alunos</a> |
+            {{/if}}
+
+            <a href="/logout">Sair</a>
+            <br><br>
         {{/if}}
         
         <hr>
         
         {{#if error}}
-        <p style="color:red">Erro: {{error}}</p>
+            <p style="color:red">Erro: {{error}}</p>
         {{/if}}
         
         {{#if success}}
-        <p style="color:green">Sucesso: {{success}}</p>
+            <p style="color:green">Sucesso: {{success}}</p>
         {{/if}}
         
         {{{body}}}

@@ -3,48 +3,61 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Minhas Receitas</title>
 </head>
 <body>
     <h2>Minhas Receitas</h2>
-<br>
-
-{{#if receitas}}
-    {{#each receitas}}
-    <table border="1" width="80%">
-        <tr>
-            <th width="30%">Nome:</th>
-            <td>{{nome}}</td>
-        </tr>
-        <tr>
-            <th>Descrição:</th>
-            <td>{{descricao}}</td>
-        </tr>
-        <tr>
-            <th>Link Externo:</th>
-            <td><a href="{{linkExterno}}" target="_blank">{{linkExterno}}</a></td>
-        </tr>
-        <tr>
-            <th>Categorias:</th>
-            <td>{{categorias}}</td>
-        </tr>
-        <tr>
-            <th>Responsáveis:</th>
-            <td>{{responsaveis}}</td>
-        </tr>
-        <tr>
-            <td colspan="2" align="center">
-                <a href="/receitaUpdate/{{id}}"><button>Editar</button></a>
-                <a href="/receitaDelete/{{id}}" onclick="return confirm('Tem certeza?')"><button>Excluir</button></a>
-            </td>
-        </tr>
-    </table>
-    <br><br>
-    {{/each}}
-{{else}}
-    <p>Você ainda não tem receitas cadastradas.</p>
     <br>
-    <a href="/receitaCreate"><button>Cadastrar Primeira Receita</button></a>
-{{/if}}
+
+    {{#if receitas}}
+        {{#each receitas}}
+            <table border="1" width="80%">
+                <tr>
+                    <th width="30%">Nome:</th>
+                    <td>{{nome}}</td>
+                </tr>
+        
+                <tr>
+                    <th>Descrição:</th>
+                    <td>{{descricao}}</td>
+                </tr>
+        
+                <tr>
+                    <th>Link Externo:</th>
+                    <td><a href="{{link_externo}}" target="_blank">{{link_externo}}</a></td>
+                </tr>
+        
+                <tr>
+                    <th>Categorias:</th>
+                    <td>
+                        {{#each Categorias}}
+                            {{nome}} |
+                        {{/each}}
+                    </td>
+                </tr>
+        
+                <tr>
+                    <th>Responsáveis:</th>
+                    <td>
+                        {{#each Alunos}}
+                            {{nome}} |
+                        {{/each}}
+                    </td>
+                </tr>
+        
+                <tr>
+                    <td colspan="2" align="center">
+                        <a href="/receitaUpdate/{{id}}"><button>Editar</button></a>
+                        <a href="/receitaDelete/{{id}}" onclick="return confirm('Tem certeza?')"><button>Excluir</button></a>
+                    </td>
+                </tr>
+            </table>
+            <br><br>
+        {{/each}}
+    {{else}}
+        <p>Você ainda não tem receitas cadastradas.</p>
+        <br>
+        <a href="/receitaCreate"><button>Cadastrar Primeira Receita</button></a>
+    {{/if}}
 </body>
 </html>

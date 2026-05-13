@@ -3,27 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Editar Categoria</title>
 </head>
 <body>
     <h2>Editar Categoria</h2>
-<br>
-<form action="/categoriaUpdate/{{categoria.id}}" method="post">
-    <table border="0">
-        <tr>
-            <td>Nome da Categoria:</td>
-            <td><input type="text" name="nome" value="{{categoria.nome}}" size="40" required></td>
-        </tr>
-        <tr>
-            <td colspan="2" align="center">
-                <input type="submit" value="Atualizar">
-            </td>
+    <br>
+    <form action="/categoriaUpdate/{{categoria.id}}" method="post">
+        <table border="0">
+            <tr>
+                <td>Nome da Categoria:</td>
+                <td><input type="text" name="nome" value="{{categoria.nome}}" size="40" required></td>
+            </tr>
+        
+            <tr>
+                <td colspan="2" align="center">
+                    <input type="submit" value="Atualizar">
+                </td>
+            </table>
         </table>
-    </table>
-</form>
-<br>
-<form action="/categoriaDelete/{{categoria.id}}" method="post">
-    <input type="submit" value="Excluir Categoria">
-</form>
+    </form>
+    <br>
+    <form action="/categoriaDelete/{{categoria.id}}" method="post">
+        <input type="submit" value="Excluir Categoria">
+    </form>
 </body>
 </html>

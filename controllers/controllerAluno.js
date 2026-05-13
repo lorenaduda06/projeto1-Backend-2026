@@ -167,6 +167,21 @@ module.exports = {
         });
     },
 
+    // Editar habilidade do aluno
+    async updateHabilidade(req, res) {
+        await db.AlunoHabilidade.update({ nivel: req.body.nivel },
+        {
+            where: {
+                aluno_id: req.session.aluno_id,
+                habilidade_id: req.params.id
+            }
+        }).then(() => {
+            res.redirect("/alunoHabilidades");
+        }).catch((error) => {
+            console.log("Erro: ", error);
+        });
+    },
+
     // Remover habilidade do aluno
     async deleteHabilidade(req, res) {
         await db.AlunoHabilidade.destroy({
@@ -210,9 +225,10 @@ module.exports = {
 
             // O relatório é renderizado com página pública (sem login)
             res.render("public/relatorioHabilidades", 
-                { relatorio: relat },
-                { layout: "noMenu" }
-            );
+            {
+                relatorio: relat,
+                layout: "noMenu" 
+            });
         }).catch((error) => {
             console.log("Erro: ", error);
         });

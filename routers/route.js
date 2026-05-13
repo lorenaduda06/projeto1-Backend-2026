@@ -13,6 +13,7 @@ const controllerAluno = require("../controllers/controllerAluno");
 const controllerReceita = require("../controllers/controllerReceita");
 const controllerCategoria = require("../controllers/controllerCategoria");
 const controllerHabilidade = require("../controllers/controllerHabilidade");
+const controllerComentario = require("../controllers/controllerComentario");
 
 const db = require("../config/db");
 
@@ -34,7 +35,10 @@ module.exports = route;
 //  ======== Rotas públicas (não exigem login) ========
 
 // Página inicial - lista todas as receitas
-route.get("/", controllerReceita.getPagInicial);
+route.get("/", controllerAluno.getLogin);
+
+// Página pública com todas as receitas
+route.get("/receitas", controllerReceita.getPagInicial);
 
 // Página filtrada por categoria
 route.get("/public/categoria/:id", controllerReceita.getPagInicialPorCat);
@@ -71,6 +75,9 @@ route.get("/alunoDelete/:id", controllerAluno.getDelete);
 route.get("/alunoHabilidades", controllerAluno.getHabilidades);
 route.post("/alunoHabilidades", controllerAluno.postHabilidade);
 
+// Atualizar alguma habilidade (exige aluno estar logado)
+route.post("/alunoHabilidadeUpdate/:id", controllerAluno.updateHabilidade);
+
 // Remover alguma habilidade (exige aluno estar logado)
 route.get("/alunoHabilidadeDelete/:habilidade_id", controllerAluno.deleteHabilidade);
 
@@ -106,3 +113,10 @@ route.get("/habilidadeUpdate/:id", controllerHabilidade.getUpdate);
 route.post("/habilidadeUpdate", controllerHabilidade.postUpdate);
 
 route.get("/habilidadeDelete/:id", controllerHabilidade.getDelete);
+
+//  ======== Comentários (CRUD - exige aluno estar logado) ========
+route.get("/comentarioCreate/:receita_id", controllerComentario.getCreate);
+
+route.post("/comentarioCreate", controllerComentario.postCreate);
+
+route.get("/comentarioList/:receita_id", controllerComentario.getList);

@@ -22,6 +22,12 @@ module.exports = {
         });
     },
 
+    /*
+    async uploadImagem(req, res) {
+
+    }
+    */
+
     // Salvar nova receita no banco de dados
     async postCreate(req, res) {
         const aluno_id = req.session.aluno_id;      // Aluno logado
@@ -167,9 +173,8 @@ module.exports = {
             {
                 categorias: cat.map(ctg => ctg.toJSON()),
                 receitas: receitas.map(rec => rec.toJSON()),
-            }, 
-            { layout: "noMenu" }
-        );
+                layout: "noMenu"
+            });
         }).catch((error) => {
             console.log("Erro: ", error);
         });
@@ -195,9 +200,8 @@ module.exports = {
                 categorias: cat.map(ctg => ctg.toJSON()),
                 cat_selecionada: cat_escolhida ? cat_escolhida.toJSON() : null,
                 receitas: receitas.map(rec => rec.toJSON()),
-            },
-            { layout: "noMenu" }
-        );
+                layout: "noMenu"
+            });
         }).catch((error) => {
             console.log("Erro: ", error);
         });

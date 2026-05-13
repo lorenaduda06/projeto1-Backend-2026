@@ -3,29 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Relatório: Proporção de Alunos por Habilidade</title>
 </head>
 <body>
     <h2>Relatório: Proporção de Alunos por Habilidade</h2>
-<br>
-
-{{#if relatorio}}
-    <table border="1" width="60%">
-        <tr>
-            <th>Habilidade</th>
-            <th>Proporção de Alunos (%)</th>
-        </tr>
-        {{#each relatorio}}
-        <tr>
-            <td>{{habilidade}}</td>
-            <td>{{proporcao}}%</td>
-        </tr>
-        {{/each}}
-    </table>
     <br>
-    <p>Proporção calculada com base no total de alunos cadastrados.</p>
-{{else}}
-    <p>Nenhuma habilidade cadastrada ainda.</p>
-{{/if}}
+
+    {{#if relatorio}}
+        <table border="1" width="60%">
+            <tr>
+                <th>Habilidade</th>
+                <th>Proporção de Alunos (%)</th>
+            </tr>
+        
+            {{#each relatorio}}
+                <tr>
+                    <td>{{habilidade}}</td>
+                    <td>{{proporcao}}%</td>
+                </tr>
+            {{/each}}
+        </table>
+        <br>
+        <p>Proporção calculada com base no total de alunos cadastrados.</p>
+    {{else}}
+        <p>Nenhuma habilidade cadastrada ainda.</p>
+    {{/if}}
 </body>
 </html>

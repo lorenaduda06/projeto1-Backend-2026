@@ -3,40 +3,44 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Todas as Receitas Cadastradas</title>
 </head>
 <body>
     <h2>Todas as Receitas Cadastradas</h2>
-<br>
+    <br>
 
-{{#if receitas}}
-    {{#each receitas}}
-    <table border="1" width="80%">
-        <tr>
-            <th width="30%">Nome:</th>
-            <td>{{nome}}</td>
-        </tr>
-        <tr>
-            <th>Descrição:</th>
-            <td>{{descricao}}</td>
-        </tr>
-        <tr>
-            <th>Link Externo:</th>
-            <td><a href="{{linkExterno}}" target="_blank">{{linkExterno}}</a></td>
-        </tr>
-        <tr>
-            <th>Categorias:</th>
-            <td>{{categorias}}</td>
-        </tr>
-        <tr>
-            <th>Responsáveis:</th>
-            <td>{{responsaveis}}</td>
-        </tr>
-    </table>
-    <br><br>
-    {{/each}}
-{{else}}
-    <p>Nenhuma receita cadastrada ainda.</p>
-{{/if}}
+    {{#if receitas}}
+        {{#each receitas}}
+            <table border="1" width="80%">
+                <tr>
+                    <th width="30%">Nome:</th>
+                    <td>{{nome}}</td>
+                </tr>
+        
+                <tr>
+                    <th>Descrição:</th>
+                    <td>{{descricao}}</td>
+                </tr>
+        
+                <tr>
+                    <th>Link Externo:</th>
+                    <td><a href="{{linkExterno}}" target="_blank">{{linkExterno}}</a></td>
+                </tr>
+        
+                <tr>
+                    <th>Categorias:</th>
+                    <td>{{categorias}}</td>
+                </tr>
+        
+                <tr>
+                    <th>Responsáveis:</th>
+                    <td>{{responsaveis}}</td>
+                </tr>
+            </table>
+            <br><br>
+        {{/each}}
+    {{else}}
+        <p>Nenhuma receita cadastrada ainda.</p>
+    {{/if}}
 </body>
 </html>
