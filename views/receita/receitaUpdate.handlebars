@@ -8,7 +8,7 @@
 <body>
     <h2>Editar Receita</h2>
     <br>
-    <form action="/receitaUpdate/{{receita.id}}" method="post">
+    <form action="/receitaUpdate/{{receita.id}}" method="post" enctype="multipart/form-data">
         <table border="0">
             <tr>
                 <td>Nome da Receita:</td>
@@ -22,7 +22,15 @@
         
             <tr>
                 <td>Link Externo:</td>
-                <td><input type="url" name="linkExterno" value="{{receita.linkExterno}}" size="50"></td>
+                <td><input type="url" name="link_externo" value="{{receita.link_externo}}" size="50"></td>
+            </tr>
+
+            <tr>
+                <td>Imagem da Receita:</td>
+                <td><input type="file" name="imagem" accept="image/*"></td>
+                <tr>
+                    <small>Deixe em branco para manter a imagem atual</small>
+                </td>
             </tr>
         </table>
     

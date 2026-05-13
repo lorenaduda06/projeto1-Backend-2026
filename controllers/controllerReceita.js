@@ -1,5 +1,7 @@
 // Importação da configuração do banco de dados
 const db = require("../config/db");
+const path = require('path');
+const fs = require('fs');
 
 module.exports = {
     // CRUD de receitas (área aluno logado)
@@ -22,15 +24,32 @@ module.exports = {
         });
     },
 
-    /*
+    
     async uploadImagem(req, res) {
+        try {
+            if (!req.file) {
+                return null;
+            }
 
-    }
-    */
+            return req.file.filename;
+        }
+        catch(error) {
+            console.log("Erro: ", error);
+            return null;
+        }
+    },
+    
 
     // Salvar nova receita no banco de dados
     async postCreate(req, res) {
         const aluno_id = req.session.aluno_id;      // Aluno logado
+
+        // Processamento do upload de imagens
+        let nome_img = null;
+
+        if (req.file) {
+            nome_img = req.file.filename;
+        }
 
         // Tratamento de relacionamentos
 
@@ -49,7 +68,8 @@ module.exports = {
         db.Receita.create({
             nome: req.body.nome,
             descricao: req.body.descricao,
-            link_externo: req.file ? req.file.filename : null
+            link_externo: req.body.link_externo,
+            imagem: nome_img
         }).then(async (receita) => {
             // Cria os relacionamentos
 
@@ -58,6 +78,7 @@ module.exports = {
 
             // Associa alunos à receita (cardinalidade: many to many)
             await receita.setAlunos(aluno_ids);
+
             res.redirect("/home");
         }).catch((error) => {
             console.log("Erro: ", error);
@@ -116,11 +137,17 @@ module.exports = {
         let aluno_ids = req.body.aluno_ids || [];
         if (!Array.isArray(aluno_ids)) aluno_ids = [aluno_ids];
 
-        await db.Receita.update({
+        let novos_dados = {
             nome: req.body.nome,
             descricao: req.body.descricao,
-            link_externo: req.file ? req.file.filename : null
-        }, {
+            link_externo: req.body.link_externo
+        }
+
+        if (req.file) {
+            novos_dados.imagem = req.file.filename;
+        }
+
+        await db.Receita.update(novos_dados, {
             where: {
                 id: req.body.id
             }
@@ -141,6 +168,12 @@ module.exports = {
                 { model: db.Aluno, as: "Alunos" }
             ]
         }).then(async(receita) => {
+            if (receita.imagem) {
+                const path_img = path.join(__dirname, "../public/uploads/", receita.imagem);
+                if (fs.existsSync(path_img)) {
+                    fs.unlinkSync(path_img);
+                }
+            }
             // Remove todas associações com categorias
             await receita.setCategorias([]);    // Remove todas categorias
 
@@ -149,6 +182,7 @@ module.exports = {
 
             // Deleta a receita
             await receita.destroy();            // Exclui a receita
+
             res.redirect("/home");
         }).catch((error) => {
             console.log("Erro: ", error);

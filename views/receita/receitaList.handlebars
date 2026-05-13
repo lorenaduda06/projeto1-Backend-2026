@@ -18,6 +18,18 @@
                 </tr>
         
                 <tr>
+                    <th>Imagem</th>
+                    <td>
+                        {{#if imagem}}
+                            <img src="/uploads/{{imagem}}" width="100" alt="{{nome}}">
+
+                        {{else}}
+                            Nenhuma imagem foi enviada
+                        {{/if}}
+                    </td>
+                </tr>
+
+                <tr>
                     <th>Descrição:</th>
                     <td>{{descricao}}</td>
                 </tr>

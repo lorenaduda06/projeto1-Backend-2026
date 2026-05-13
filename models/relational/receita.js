@@ -19,8 +19,13 @@ module.exports = (sequelize, Sequelize) => {
 
         link_externo: {
             type: Sequelize.STRING,
-            allowNull: false
+            allowNull: true
         },
+
+        imagem: {
+            type: Sequelize.STRING,
+            allowNull: true
+        }
     });
 
     return Receita;
