@@ -57,7 +57,9 @@ module.exports = {
         // Qualquer rota que comece com "/public/" - acessível (ex: receitas públicas, relatório)
         if (req.url.startsWith("/public/categoria/")) return next();
 
-        // Por padrão, qualquer rota sem login, redireciona para página de login
+        // Liberar comentários para usuários não logados (apenas leitura)
+        if (req.url.startsWith("/comentarioList/")) return next();
+        
         res.redirect("/");
     }
 }
