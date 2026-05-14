@@ -35,7 +35,7 @@ module.exports = route;
 //  ======== Rotas públicas (não exigem login) ========
 
 // Página inicial - lista todas as receitas
-route.get("/", controllerAluno.getLogin);
+route.get("/", controllerReceita.getPagInicial);
 
 // Página pública com todas as receitas
 route.get("/receitas", controllerReceita.getPagInicial);
