@@ -1,38 +1,28 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lista de Alunos</title>
-</head>
-<body>
-    <h2>Lista de Alunos</h2>
-    <br>
-    <table border="1" width="80%">
-        <tr>
-            <th>ID</th>
-            <th>Email</th>
-            <th>Tipo</th>
+<h2>Lista de Alunos</h2>
+<br>
+<table border="1" width="80%">
+    <tr>
+        <th>ID</th>
+        <th>Email</th>
+        <th>Tipo</th>
 
-            {{#if admin}}
-                <th>Ações</th>
-            {{/if}}
-        </tr>
-    
-        {{#each alunos}}
-            <tr>
-                <td>{{id}}</td>
-                <td>{{email}}</td>
-                <td>{{#if tipo}}Admin{{else}}Aluno{{/if}}</td>
+        {{#if admin}}
+        <th>Ações</th>
+        {{/if}}
+    </tr>
 
-                {{#if ../admin}}
-                    <td>
-                        <a href="/alunoUpdate/{{id}}">Editar</a> |
-                        <a href="/alunoDelete/{{id}}" onclick="return confirm('Tem certeza?')">Excluir</a>
-                    </td>
-                {{/if}}
-            </tr>
-        {{/each}}
-    </table>
-</body>
-</html>
+    {{#each alunos}}
+    <tr>
+        <td>{{id}}</td>
+        <td>{{email}}</td>
+        <td>{{#if tipo}}Admin{{else}}Aluno{{/if}}</td>
+
+        {{#if ../admin}}
+        <td>
+            <a href="/alunoUpdate/{{id}}">Editar</a> |
+            <a href="/alunoDelete/{{id}}" onclick="return confirm('Tem certeza?')">Excluir</a>
+        </td>
+        {{/if}}
+    </tr>
+    {{/each}}
+</table>

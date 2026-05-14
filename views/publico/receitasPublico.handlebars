@@ -1,56 +1,52 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Todas as Receitas Cadastradas</title>
-</head>
-<body>
-    <h2>Todas as Receitas Cadastradas</h2>
-    <br>
+<h2>Todas as Receitas Cadastradas</h2>
+<br>
 
-    {{#if receitas}}
-        {{#each receitas}}
-            <table border="1" width="80%">
-                <tr>
-                    <th>Nome:</th>
-                    <td>{{nome}}</td>
-                </tr>
+{{#if receitas}}
+{{#each receitas}}
+<table border="1" width="80%">
+    <tr>
+        <th>Nome:</th>
+        <td>{{nome}}</td>
+    </tr>
 
-                <tr>
-                    <th>Descrição:</th>
-                    <td>{{descricao}}</td>
-                </tr>
+    <tr>
+        <th>Descrição:</th>
+        <td>{{descricao}}</td>
+    </tr>
 
-                <tr>
-                    <th>Link Externo:</th>
-                    <td><a href="{{link_externo}}" target="_blank">{{link_externo}}</a></td>
-                </tr>
+    <tr>
+        <th>Link Externo:</th>
+        <td><a href="{{link_externo}}" target="_blank">{{link_externo}}</a></td>
+    </tr>
 
-                <tr>
-                    <th>Categorias:</th>
-                    <td>
-                        {{#each Categorias}}
-                            {{nome}}
-                            <br>
-                        {{/each}}
-                    </td>
-                </tr>
-            
-                <tr>
-                    <th>Responsáveis:</th>
-                    <td>
-                        {{#each Alunos}}
-                            {{nome}}
-                            <br>
-                         {{/each}}
-                    </td>
-                </tr>
-            </table>
-            <br><br>
-        {{/each}}
-    {{else}}
-        <p>Nenhuma receita cadastrada ainda.</p>
-    {{/if}}
-</body>
-</html>
+    <tr>
+        <th>Categorias:</th>
+        <td>
+            {{#each Categorias}}
+            {{nome}}
+            <br>
+            {{/each}}
+        </td>
+    </tr>
+
+    <tr>
+        <th>Responsáveis:</th>
+        <td>
+            {{#each Alunos}}
+            {{nome}}
+            <br>
+            {{/each}}
+        </td>
+    </tr>
+
+    <tr>
+        <td colspan="2" align="center">
+            <a href="/comentarioList/{{id}}"><button>Ver Comentários</button></a>
+        </td>
+    </tr>
+</table>
+<br><br>
+{{/each}}
+{{else}}
+<p>Nenhuma receita cadastrada ainda.</p>
+{{/if}}

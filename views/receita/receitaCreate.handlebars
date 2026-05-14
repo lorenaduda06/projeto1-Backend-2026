@@ -1,62 +1,52 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cadastrar Nova Receita</title>
-</head>
-<body>
-    <h2>Cadastrar Nova Receita</h2>
-    <br>
-    <form action="/receitaCreate" method="post" enctype="multipart/form-data">
-        <table border="0">
-            <tr>
-                <td>Nome da Receita:</td>
-                <td><input type="text" name="nome" size="50" required></td>
-            </tr>
-        
-            <tr>
-                <td>Descrição:</td>
-                <td><textarea name="descricao" rows="4" cols="50" required></textarea></td>
-            </tr>
-        
-            <tr>
-                <td>Link Externo (opcional):</td>
-                <td><input type="url" name="link_externo" size="50"></td>
-            </tr>
+<h2>Cadastrar Nova Receita</h2>
+<br>
+<form action="/receitaCreate" method="post" enctype="multipart/form-data">
+    <table border="0">
+        <tr>
+            <td>Nome da Receita:</td>
+            <td><input type="text" name="nome" size="50" required></td>
+        </tr>
 
-            <tr>
-                <td>Imagem da Receita:</td>
-                <td><input type="file" name="imagem" accept="image/*"></td>
-            </tr>
-        </table>
-    
-        <br>
-        <h3>Categorias da Receita</h3>
-        <table border="1">
-            <tr>
-                {{#each categorias}}
-                    <td>
-                        <input type="checkbox" name="categoria_ids" value="{{id}}"> {{nome}}
-                    </td>
-                {{/each}}
-            </tr>
-        </table>
-    
-        <br>
-        <h3>Outros Alunos Responsáveis</h3>
-        <table border="1">
-            <tr>
-                {{#each alunos}}
-                    <td>
-                        <input type="checkbox" name="aluno_ids" value="{{id}}"> {{nome}}
-                    </td>
-                {{/each}}
-            </tr>
-        </table>
-    
-        <br>
-        <input type="submit" value="Cadastrar Receita">
-    </form>
-</body>
-</html>
+        <tr>
+            <td>Descrição:</td>
+            <td><textarea name="descricao" rows="4" cols="50" required></textarea></td>
+        </tr>
+
+        <tr>
+            <td>Link Externo (opcional):</td>
+            <td><input type="url" name="link_externo" size="50"></td>
+        </tr>
+
+        <tr>
+            <td>Imagem da Receita:</td>
+            <td><input type="file" name="imagem" accept="image/*"></td>
+        </tr>
+    </table>
+
+    <br>
+    <h3>Categorias da Receita</h3>
+    <table border="1">
+        <tr>
+            {{#each categorias}}
+            <td>
+                <input type="checkbox" name="categoria_ids" value="{{id}}"> {{nome}}
+            </td>
+            {{/each}}
+        </tr>
+    </table>
+
+    <br>
+    <h3>Outros Alunos Responsáveis</h3>
+    <table border="1">
+        <tr>
+            {{#each alunos}}
+            <td>
+                <input type="checkbox" name="aluno_ids" value="{{id}}"> {{nome}}
+            </td>
+            {{/each}}
+        </tr>
+    </table>
+
+    <br>
+    <input type="submit" value="Cadastrar Receita">
+</form>

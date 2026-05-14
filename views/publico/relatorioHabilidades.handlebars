@@ -1,34 +1,24 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Relatório: Proporção de Alunos por Habilidade</title>
-</head>
-<body>
-    <h2>Relatório: Proporção de Alunos por Habilidade</h2>
-    <br>
+<h2>Relatório: Proporção de Alunos por Habilidade</h2>
+<br>
 
-    {{#if relatorio}}
-        <table border="1" width="60%">
-            <tr>
-                <th>Habilidade</th>
-                <th>Qtd Alunos</th>
-                <th>Proporção (%)</th>
-            </tr>
-    
-            {{#each relatorio}}
-                <tr>
-                    <td>{{nome}}</td>
-                    <td>{{qt}}</td>
-                    <td>{{distribuicao_por_hab}}%</td>
-                </tr>
-            {{/each}}
-        </table>
-        <br>
-        <p>Proporção calculada com base no total de alunos cadastrados.</p>
-    {{else}}
-        <p>Nenhuma habilidade cadastrada ainda.</p>
-    {{/if}}
-</body>
-</html>
+{{#if relatorio}}
+<table border="1" width="60%">
+    <tr>
+        <th>Habilidade</th>
+        <th>Qtd Alunos</th>
+        <th>Proporção (%)</th>
+    </tr>
+
+    {{#each relatorio}}
+    <tr>
+        <td>{{nome}}</td>
+        <td>{{qt}}</td>
+        <td>{{distribuicao_por_hab}}%</td>
+    </tr>
+    {{/each}}
+</table>
+<br>
+<p>Proporção calculada com base no total de alunos cadastrados.</p>
+{{else}}
+<p>Nenhuma habilidade cadastrada ainda.</p>
+{{/if}}

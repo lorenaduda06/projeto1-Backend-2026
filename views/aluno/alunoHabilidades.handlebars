@@ -1,68 +1,59 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Minhas Habilidades Culinárias</title>
-</head>
-<body>
-    <h2>Minhas Habilidades Culinárias</h2>
-    <br>
+<h2>Minhas Habilidades Culinárias</h2>
+<br>
 
-    <h3>Adicionar Habilidade</h3>
-    <form action="/alunoHabilidades" method="post">
-        <table border="0">
-            <tr>
-                <td>Habilidade:</td>
-                <td>
-                    <select name="habilidade_id" required>
-                        <option value="">Selecione...</option>
-                        {{#each habilidades}}
-                            <option value="{{id}}">{{nome}}</option>
-                        {{/each}}
-                    </select>
-                </td>
-            </tr>
-
-            <tr>
-                <td>Nível (0 a 10):</td>
-                <td><input type="number" name="nivel" min="0" max="10" required></td>
-            </tr>
-
-            <tr>
-                <td colspan="2" align="center">
-                    <input type="submit" value="Adicionar">
-                </td>
-            </tr>
-        </table>
-    </form>
-
-    <br><hr><br>
-
-    <h3>Minhas Habilidades</h3>
-    <table border="1" width="60%">
+<h3>Adicionar Habilidade</h3>
+<form action="/alunoHabilidades" method="post">
+    <table border="0">
         <tr>
-            <th>Habilidade</th>
-            <th>Nível</th>
-            <th>Ações</th>
+            <td>Habilidade:</td>
+            <td>
+                <select name="habilidade_id" required>
+                    <option value="">Selecione...</option>
+                    {{#each habilidades}}
+                    <option value="{{id}}">{{nome}}</option>
+                    {{/each}}
+                </select>
+            </td>
         </tr>
 
-        {{#each my_hab}}
-            <tr>
-                <td>{{nome}}</td>
-                <td>{{nivel}} / 10</td>
-                <td>
-                    <form action="/alunoHabilidadeUpdate/{{id}}" method="post" style="display:inline;">
-                        <input type="number" name="nivel" min="0" max="10" value="{{nivel}}" size="3">
-                        <input type="submit" value="Atualizar">
-                    </form>
-                
-                    <form action="/alunoHabilidadeDelete/{{id}}" method="get" style="display:inline;">
-                        <input type="submit" value="Remover">
-                    </form>
-                </td>
-            </tr>
-        {{/each}}
+        <tr>
+            <td>Nível (0 a 10):</td>
+            <td><input type="number" name="nivel" min="0" max="10" required></td>
+        </tr>
+
+        <tr>
+            <td colspan="2" align="center">
+                <input type="submit" value="Adicionar">
+            </td>
+        </tr>
     </table>
-</body>
-</html>
+</form>
+
+<br>
+<hr><br>
+
+<h3>Minhas Habilidades</h3>
+<table border="1" width="60%">
+    <tr>
+        <th>Habilidade</th>
+        <th>Nível</th>
+        <th>Ações</th>
+    </tr>
+
+    {{#each my_hab}}
+    <tr>
+        <td>{{nome}}</td>
+        <td>{{nivel}} / 10</td>
+        <td>
+            <form action="/alunoHabilidadeUpdate/{{id}}" method="post" style="display:inline;">
+                <input type="number" name="nivel" min="0" max="10" value="{{nivel}}" size="3">
+                <input type="submit" value="Atualizar">
+            </form>
+
+            <form action="/alunoHabilidadeDelete/{{id}}" method="get" style="display:inline;">
+                <input type="submit" value="Remover">
+            </form>
+        </td>
+    </tr>
+    {{/each}}
+</table>

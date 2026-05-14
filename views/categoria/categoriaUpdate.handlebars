@@ -1,24 +1,14 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Editar Categoria</title>
-</head>
-<body>
-    <h2>Editar Categoria</h2>
-    <br>
+<h2>Editar Categoria</h2>
+<br>
 
-    <form action="/categoriaUpdate" method="post">
-        <input type="hidden" name="id" value={{categoria.id}}>
-        Nome: <input type="text" name="nome" value="{{categoria.nome}}">
-        <br><br>
-        <input type="submit" value="Atualizar">
-    </form>
+<form action="/categoriaUpdate" method="post">
+    <input type="hidden" name="id" value={{categoria.id}}>
+    Nome: <input type="text" name="nome" value="{{categoria.nome}}">
+    <br><br>
+    <input type="submit" value="Atualizar">
+</form>
 
-    <br>
-    <a href="/categoriaDelete/{{categoria.id}}">
-        <button>Excluir</button>
-    </a>
-</body>
-</html>
+<br>
+<a href="/categoriaDelete/{{categoria.id}}">
+    <button>Excluir</button>
+</a>

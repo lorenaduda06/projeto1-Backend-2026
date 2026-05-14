@@ -135,6 +135,8 @@ module.exports = {
 
     // Salvar alterações de uma receita
     async postUpdate(req, res) {
+        const aluno_id = req.session.aluno_id;
+        
         let categoria_ids = req.body.categoria_ids || [];
         if (!Array.isArray(categoria_ids)) categoria_ids = [categoria_ids];
 
@@ -144,6 +146,8 @@ module.exports = {
 
         let aluno_ids = req.body.aluno_ids || [];
         if (!Array.isArray(aluno_ids)) aluno_ids = [aluno_ids];
+
+        if (!aluno_ids.includes(String(aluno_id))) aluno_ids.push(String(aluno_id));
 
         let novos_dados = {
             nome: req.body.nome,

@@ -1,46 +1,36 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lista de Comentários</title>
-</head>
-<body>
-    <h2>Comentários da Receita</h2>
-    <br>
+<h2>Comentários da Receita</h2>
+<br>
 
-    {{#if comentarios}}
-        {{#each comentarios}}
-            <table border="1" width="80%">
-                <tr>
-                    <th width="20%">Título:</th>
-                    <td>{{titulo}}</td>
-                </tr>
+{{#if comentarios}}
+{{#each comentarios}}
+<table border="1" width="80%">
+    <tr>
+        <th width="20%">Título:</th>
+        <td>{{titulo}}</td>
+    </tr>
 
-                <tr>
-                    <th>Autor:</th>
-                    <td>{{autor}}</td>
-                </tr>
+    <tr>
+        <th>Autor:</th>
+        <td>{{autor}}</td>
+    </tr>
 
-                <tr>
-                    <th>Comentário:</th>
-                    <td>{{texto}}</td>
-                </tr>
+    <tr>
+        <th>Comentário:</th>
+        <td>{{texto}}</td>
+    </tr>
 
-                <tr>
-                    <th>Data:</th>
-                    <td>{{data}}</td>
-                </tr>
-            </table>
-            <br><br>
-        {{/each}}
-    {{else}}
-        <p>Nenhum comentário cadastrado para esta receita.</p>
-    {{/if}}
+    <tr>
+        <th>Data:</th>
+        <td>{{data}}</td>
+    </tr>
+</table>
+<br><br>
+{{/each}}
+{{else}}
+<p>Nenhum comentário cadastrado para esta receita.</p>
+{{/if}}
 
-    <br>
-    <a href="/comentarioCreate/{{receita_id}}">Adicionar novo comentário</a>
-    <br><br>
-    <a href="/receitaList">Voltar para minhas receitas</a>
-</body>
-</html>
+<br>
+<a href="/comentarioCreate/{{receita_id}}">Adicionar novo comentário</a>
+<br><br>
+<a href="/receitaList">Voltar para minhas receitas</a>
