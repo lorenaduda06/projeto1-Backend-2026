@@ -1,52 +1,52 @@
-<h2>Cadastrar Nova Receita</h2>
+<h2 class="page-title">Cadastrar Nova Receita</h2>
 <br>
-<form action="/receitaCreate" method="post" enctype="multipart/form-data">
+<form class="form-centralizado receita-form" action="/receitaCreate" method="post" enctype="multipart/form-data">
     <table border="0">
         <tr>
             <td>Nome da Receita:</td>
-            <td><input type="text" name="nome" size="50" required></td>
+            <td><input class="form-input" type="text" name="nome" size="50" required></td>
         </tr>
 
         <tr>
             <td>Descrição:</td>
-            <td><textarea name="descricao" rows="4" cols="50" required></textarea></td>
+            <td><textarea class="form-textarea" name="descricao" rows="4" cols="50" required></textarea></td>
         </tr>
 
         <tr>
             <td>Link Externo (opcional):</td>
-            <td><input type="url" name="link_externo" size="50"></td>
+            <td><input class="form-input" type="url" name="link_externo" size="50"></td>
         </tr>
 
         <tr>
             <td>Imagem da Receita:</td>
-            <td><input type="file" name="imagem" accept="image/*"></td>
+            <td><input class="form-file" type="file" name="imagem" accept="image/*"></td>
         </tr>
     </table>
 
     <br>
-    <h3>Categorias da Receita</h3>
-    <table border="1">
+    <h3 class="section-title">Categorias da Receita</h3>
+    <table class="check-table" border="1">
         <tr>
             {{#each categorias}}
             <td>
-                <input type="checkbox" name="categoria_ids" value="{{id}}"> {{nome}}
+                <input class="form-check" type="checkbox" name="categoria_ids" value="{{id}}"> {{nome}}
             </td>
             {{/each}}
         </tr>
     </table>
 
     <br>
-    <h3>Outros Alunos Responsáveis</h3>
-    <table border="1">
+    <h3 class="section-title">Outros Alunos Responsáveis</h3>
+    <table class="check-table" border="1">
         <tr>
             {{#each alunos}}
             <td>
-                <input type="checkbox" name="aluno_ids" value="{{id}}"> {{nome}}
+                <input class="form-check" type="checkbox" name="aluno_ids" value="{{id}}"> {{nome}}
             </td>
             {{/each}}
         </tr>
     </table>
 
     <br>
-    <input type="submit" value="Cadastrar Receita">
+    <input class="btn-submit" type="submit" value="Cadastrar Receita">
 </form>

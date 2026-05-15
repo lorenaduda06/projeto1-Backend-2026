@@ -1,36 +1,44 @@
-<h2>Editar Receita</h2>
+<h2 class="page-title">Editar Receita</h2>
 <br>
 
-<form action="/receitaUpdate" method="post" enctype="multipart/form-data">
+<form class="form-centralizado form-editar receita-form" action="/receitaUpdate" method="post"
+    enctype="multipart/form-data">
     <input type="hidden" name="id" value={{receita.id}}>
-    Nome: <input type="text" name="nome" value="{{receita.nome}}">
+    Nome: <input class="form-input" type="text" name="nome" value="{{receita.nome}}">
     <br><br>
 
-    Descrição: <textarea name="descricao" rows="4" cols="50">{{receita.descricao}}</textarea>
+    Descrição: <textarea class="form-textarea" name="descricao" rows="4" cols="50">{{receita.descricao}}</textarea>
     <br><br>
 
-    Link Externo: <input type="text" name="link_externo" value="{{receita.link_externo}}">
+    Link Externo: <input class="form-input" type="text" name="link_externo" value="{{receita.link_externo}}">
     <br><br>
 
-    Imagem: <input type="file" name="imagem" accept="image/*">
+    Imagem: <input class="form-file" type="file" name="imagem" accept="image/*">
     <br><br>
 
     <b>Categorias:</b><br>
-    {{#each categorias}}
-    <input type="checkbox" name="categoria_ids" value="{{id}}"> {{nome}}<br>
-    {{/each}}
+    <div class="checkbox-list">
+        {{#each categorias}}
+        <label class="check-item">
+            <input class="form-check" type="checkbox" name="categoria_ids" value="{{id}}"> {{nome}}<br>
+        </label>
+        {{/each}}
+    </div>
 
     <br>
     <b>Alunos responsáveis:</b><br>
-    {{#each alunos}}
-    <input type="checkbox" name="aluno_ids" value="{{id}}"> {{nome}}<br>
-    {{/each}}
-
+    <div class="checkbox-list">
+        {{#each alunos}}
+        <label class="check-item">
+            <input class="form-check" type="checkbox" name="aluno_ids" value="{{id}}"> {{nome}}
+        </label>
+        {{/each}}
+    </div>
     <br>
-    <input type="submit" value="Atualizar Receita">
+    <input class="btn-submit" type="submit" value="Atualizar Receita">
 </form>
 
 <br>
-<a href="/receitaDelete/{{receita.id}}">
-    <button>Excluir</button>
+<a class="delete-link" href="/receitaDelete/{{receita.id}}">
+    <button class="btn-danger">Excluir</button>
 </a>

@@ -1,27 +1,27 @@
-<h2>Cadastrar Comentário</h2>
+<h2 class="page-title">Cadastrar Comentário</h2>
 <br>
 
-<form action="/comentarioCreate" method="post">
-    <table border="0">
+<form class="form-centralizado" action="/comentarioCreate" method="post">
+    <table class="form-table" border="0">
         <input type="hidden" name="receita_id" value="{{receita_id}}">
 
         <tr>
             <td>Título:</td>
-            <td><input type="text" name="titulo" size="50" required></td>
+            <td><input input class="form-input" type="text" name="titulo" size="50" required></td>
         </tr>
 
         <tr>
             <td>Texto:</td>
-            <td><textarea name="texto" rows="5" cols="50" required></textarea></td>
+            <td><textarea class="form-textarea" name="texto" rows="5" cols="50" required></textarea></td>
         </tr>
 
         <tr>
             <td colspan="2" align="center">
-                <input type="submit" value="Cadastrar Comentário">
+                <input class="btn-submit" type="submit" value="Cadastrar Comentário">
             </td>
         </tr>
     </table>
 </form>
 
 <br>
-<a href="/receitaList">Voltar para minhas receitas</a>
+<a class="back-link" href="/receitaList">Voltar para minhas receitas</a>

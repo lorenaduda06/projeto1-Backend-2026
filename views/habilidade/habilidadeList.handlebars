@@ -1,6 +1,6 @@
-<h2>Lista de Habilidades</h2>
+<h2 class="page-title">Lista de Habilidades</h2>
 <br>
-<table border="1" width="60%">
+<table class="data-table habilidades-list-table" border="1" width="60%">
     <tr>
         <th>ID</th>
         <th>Nome</th>
@@ -12,11 +12,12 @@
         <td>{{id}}</td>
         <td>{{nome}}</td>
         <td>
-            <a href="/habilidadeUpdate/{{id}}">Editar</a> |
-            <a href="/habilidadeDelete/{{id}}" onclick="return confirm('Tem certeza?')">Excluir</a>
+            <a class="table-action edit-action" href="/habilidadeUpdate/{{id}}">Editar</a> |
+            <a class="table-action delete-action" href="/habilidadeDelete/{{id}}"
+                onclick="return confirm('Tem certeza?')">Excluir</a>
         </td>
     </tr>
     {{/each}}
 </table>
 <br>
-<a href="/habilidadeCreate"><button>Nova Habilidade</button></a>
+<a class="create-link" href="/habilidadeCreate"><button class="btn-submit">Nova Habilidade</button></a>

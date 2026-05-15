@@ -1,72 +1,75 @@
-<h2>Minhas Receitas</h2>
+<h2 class="page-title">Minhas Receitas</h2>
 <br>
 
 {{#if receitas}}
-{{#each receitas}}
-<table border="1" width="80%">
-    <tr>
-        <th width="30%">Nome:</th>
-        <td>{{nome}}</td>
-    </tr>
+<div class="receitas-lista">
+    {{#each receitas}}
+    <table class="receita-table minhas-receitas-table" border="1" width="80%">
+        <tr>
+            <th width="30%">Nome:</th>
+            <td>{{nome}}</td>
+        </tr>
 
-    <tr>
-        <th>Imagem</th>
-        <td>
-            {{#if imagem}}
-            <img src="/uploads/{{imagem}}" width="100" alt="{{nome}}">
+        <tr>
+            <th>Imagem</th>
+            <td>
+                {{#if imagem}}
+                <img class="receita-img" src="/uploads/{{imagem}}" width="100" alt="{{nome}}">
 
-            {{else}}
-            Nenhuma imagem foi enviada
-            {{/if}}
-        </td>
-    </tr>
+                {{else}}
+                <span class="muted-text">Nenhuma imagem foi enviada</span>
+                {{/if}}
+            </td>
+        </tr>
 
-    <tr>
-        <th>Descrição:</th>
-        <td>{{descricao}}</td>
-    </tr>
+        <tr>
+            <th>Descrição:</th>
+            <td>{{descricao}}</td>
+        </tr>
 
-    <tr>
-        <th>Link Externo:</th>
-        <td><a href="{{link_externo}}" target="_blank">{{link_externo}}</a></td>
-    </tr>
+        <tr>
+            <th>Link Externo:</th>
+            <td><a class="receita-link" href="{{link_externo}}" target="_blank">{{link_externo}}</a></td>
+        </tr>
 
-    <tr>
-        <th>Categorias:</th>
-        <td>
-            {{#each Categorias}}
-            {{nome}}
-            {{/each}}
-        </td>
-    </tr>
+        <tr>
+            <th>Categorias:</th>
+            <td>
+                {{#each Categorias}}
+                <span class="tag">{{nome}}</span>
+                {{/each}}
+            </td>
+        </tr>
 
-    <tr>
-        <th>Responsáveis:</th>
-        <td>
-            {{#each Alunos}}
-            {{nome}}
-            {{/each}}
-        </td>
-    </tr>
+        <tr>
+            <th>Responsáveis:</th>
+            <td>
+                {{#each Alunos}}
+                <span class="responsavel">{{nome}}</span>
+                {{/each}}
+            </td>
+        </tr>
 
-    <tr>
-        <td colspan="2" align="center">
-            <a href="/receitaUpdate/{{id}}"><button>Editar</button></a>
-            <a href="/receitaDelete/{{id}}" onclick="return confirm('Tem certeza?')"><button>Excluir</button></a>
-        </td>
-    </tr>
+        <tr>
+            <td colspan="2" align="center">
+                <a href="/receitaUpdate/{{id}}"><button class="btn-small">Editar</button></a>
+                <a href="/receitaDelete/{{id}}" onclick="return confirm('Tem certeza?')"><button
+                        class="btn-small btn-remove">Excluir</button></a>
+            </td>
+        </tr>
 
-    <tr>
-        <td colspan="2" align="center">
-            <a href="/comentarioList/{{id}}"><button>Ver Comentários</button></a>
-            <a href="/comentarioCreate/{{id}}"><button>Comentar</button></a>
-        </td>
-    </tr>
-</table>
-<br><br>
-{{/each}}
+        <tr>
+            <td colspan="2" align="center">
+                <a href="/comentarioList/{{id}}"><button class="btn-small">Ver Comentários</button></a>
+                <a href="/comentarioCreate/{{id}}"><button class="btn-small btn-secondary">Comentar</button></a>
+            </td>
+        </tr>
+    </table>
+    <br><br>
+    {{/each}}
+</div>
 {{else}}
-<p>Você ainda não tem receitas cadastradas.</p>
+<p class="empty-message">Você ainda não tem receitas cadastradas.</p>
 <br>
-<a href="/receitaCreate"><button>Cadastrar Primeira Receita</button></a>
+<a class="create-link" href="/receitaCreate"><button>Cadastrar Primeira Receita</button></a>
 {{/if}}

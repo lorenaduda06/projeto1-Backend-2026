@@ -1,25 +1,28 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/css/style.css">
     <title>Portfólio de Receitas - Login</title>
 </head>
+
 <body>
     <center>
         <h1>Portfólio de Receitas Culinárias</h1>
         <br><br>
-        
+
         {{#if error}}
-            <p style="color:red">Erro: {{error}}</p>
+        <p style="color:red">Erro: {{error}}</p>
         {{/if}}
-        
+
         {{{body}}}
-        
+
         <br><br>
         <hr>
         <small>Sistema de Portfólio de Receitas - UTFPR</small>
     </center>
 </body>
+
 </html>

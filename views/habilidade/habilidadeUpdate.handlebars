@@ -1,14 +1,14 @@
-<h2>Editar Habilidade</h2>
+<h2 class="page-title">Editar Habilidade</h2>
 <br>
 
-<form action="/habilidadeUpdate" method="post">
+<form class="form-centralizado form-editar" action="/habilidadeUpdate" method="post">
     <input type="hidden" name="id" value={{habilidade.id}}>
-    Nome: <input type="text" name="nome" value="{{habilidade.nome}}">
+    Nome: <input class="form-input" type="text" name="nome" value="{{habilidade.nome}}">
     <br><br>
-    <input type="submit" value="Atualizar">
+    <input class="btn-submit" type="submit" value="Atualizar">
 </form>
 
 <br>
-<a href="/habilidadeDelete/{{habilidade.id}}">
-    <button>Excluir</button>
+<a class="delete-link" href="/habilidadeDelete/{{habilidade.id}}">
+    <button class="btn-danger">Excluir</button>
 </a>

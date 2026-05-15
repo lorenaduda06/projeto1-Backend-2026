@@ -1,3 +1,4 @@
+/*      Geral       */
 * {
     margin: 0;
     padding: 0;
@@ -60,4 +61,700 @@ main {
 
 h2 {
     margin-bottom: 20px;
+}
+
+.page-title {
+    text-align: center;
+    color: #ff7b00;
+    font-size: 28px;
+    margin-bottom: 30px;
+}
+
+.receitas-lista {
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+    align-items: center;
+}
+
+.receita-table {
+    width: 100%;
+    max-width: 850px;
+    border-collapse: collapse;
+    border: none;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+    background: white;
+}
+
+.receita-table th {
+    width: 180px;
+    background: #ff7b00;
+    color: white;
+    text-align: left;
+    padding: 14px 16px;
+    font-size: 15px;
+}
+
+.receita-table td {
+    padding: 14px 16px;
+    border-bottom: 1px solid #eee;
+    line-height: 1.5;
+}
+
+.receita-table tr:last-child td {
+    border-bottom: none;
+    background: #fafafa;
+}
+
+.receita-link {
+    color: #ff7b00;
+    font-weight: bold;
+    text-decoration: none;
+    word-break: break-word;
+}
+
+.receita-link:hover {
+    text-decoration: underline;
+}
+
+.tag,
+.responsavel {
+    display: inline-block;
+    background: #fff1e6;
+    color: #c45a00;
+    padding: 6px 10px;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: bold;
+    margin: 4px 6px 4px 0;
+}
+
+.responsavel {
+    background: #eef6ff;
+    color: #1d5f99;
+}
+
+.btn-comentarios {
+    background: #ff7b00;
+    color: white;
+    border: none;
+    padding: 10px 18px;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.btn-comentarios:hover {
+    background: #e66f00;
+    transform: translateY(-2px);
+}
+
+.empty-message {
+    text-align: center;
+    color: #777;
+    font-size: 18px;
+    margin: 30px 0;
+}
+
+.login-link {
+    text-align: center;
+    margin-top: 25px;
+}
+
+.login-link a {
+    color: #ff7b00;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.login-link a:hover {
+    text-decoration: underline;
+}
+
+/*      Receitas por Categoria      */
+.categoria-filtro {
+    text-align: center;
+    margin-bottom: 35px;
+    padding-bottom: 25px;
+    border-bottom: 1px solid #eee;
+}
+
+.categoria-filtro h3,
+.section-title {
+    color: #444;
+    margin-bottom: 18px;
+    font-size: 21px;
+}
+
+.categoria-links {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.categoria-links a {
+    text-decoration: none;
+    color: #ff7b00;
+    background: #fff1e6;
+    border: 1px solid #ffd2ad;
+    padding: 9px 14px;
+    border-radius: 20px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.categoria-links a:hover {
+    background: #ff7b00;
+    color: white;
+    transform: translateY(-2px);
+}
+
+.receitas-section {
+    margin-top: 10px;
+}
+
+.section-title {
+    text-align: center;
+}
+
+.voltar-link {
+    text-align: center;
+    margin-top: 30px;
+}
+
+.voltar-link a {
+    color: #ff7b00;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.voltar-link a:hover {
+    text-decoration: underline;
+}
+
+/*      Relatório de Habilidades        */
+.relatorio-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.relatorio-table {
+    width: 100%;
+    max-width: 750px;
+    border-collapse: collapse;
+    border: none;
+    border-radius: 12px;
+    overflow: hidden;
+    background: white;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+}
+
+.relatorio-table th {
+    background: #ff7b00;
+    color: white;
+    padding: 14px 16px;
+    text-align: center;
+    font-size: 15px;
+}
+
+.relatorio-table td {
+    padding: 14px 16px;
+    border-bottom: 1px solid #eee;
+    text-align: center;
+}
+
+.relatorio-table tr:nth-child(even) td {
+    background: #fffaf5;
+}
+
+.relatorio-table tr:last-child td {
+    border-bottom: none;
+}
+
+.percentual {
+    display: inline-block;
+    background: #fff1e6;
+    color: #c45a00;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-weight: bold;
+    min-width: 70px;
+}
+
+.relatorio-info {
+    margin-top: 18px;
+    color: #666;
+    font-size: 15px;
+    text-align: center;
+}
+
+/*      Login       */
+.login-form {
+    display: flex;
+    justify-content: center;
+}
+
+.form-table {
+    width: 100%;
+    max-width: 420px;
+    border-collapse: collapse;
+    background: white;
+}
+
+.form-table td {
+    padding: 10px;
+    font-weight: bold;
+    color: #444;
+}
+
+.form-table input[type="text"],
+.form-table input[type="password"] {
+    width: 100%;
+    padding: 11px 12px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    outline: none;
+    font-size: 15px;
+    transition: 0.3s;
+}
+
+.form-table input[type="text"]:focus,
+.form-table input[type="password"]:focus {
+    border-color: #ff7b00;
+    box-shadow: 0 0 0 3px rgba(255,123,0,0.15);
+}
+
+.btn-submit {
+    background: #ff7b00;
+    color: white;
+    border: none;
+    padding: 11px 28px;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+    margin-top: 8px;
+}
+
+.btn-submit:hover {
+    background: #e66f00;
+    transform: translateY(-2px);
+}
+
+.login-aviso {
+    text-align: center;
+    color: #666;
+    margin-top: 22px;
+    font-size: 15px;
+}
+
+/*      Aluno        */
+.form-centralizado {
+    max-width: 520px;
+    margin: 0 auto;
+}
+
+.form-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.form-table td {
+    padding: 10px;
+    font-weight: bold;
+    color: #444;
+}
+
+.form-table td:first-child {
+    width: 120px;
+}
+
+.form-input,
+.form-select {
+    width: 100%;
+    padding: 11px 12px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    outline: none;
+    font-size: 15px;
+    transition: 0.3s;
+    background: white;
+}
+
+.form-input:focus,
+.form-select:focus {
+    border-color: #ff7b00;
+    box-shadow: 0 0 0 3px rgba(255,123,0,0.15);
+}
+
+.form-editar {
+    text-align: left;
+    font-weight: bold;
+    color: #444;
+}
+
+.form-editar .form-input,
+.form-editar .form-select {
+    margin-top: 6px;
+}
+
+.btn-submit {
+    background: #ff7b00;
+    color: white;
+    border: none;
+    padding: 11px 28px;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.btn-submit:hover {
+    background: #e66f00;
+    transform: translateY(-2px);
+}
+
+.delete-link {
+    display: block;
+    text-align: center;
+    text-decoration: none;
+}
+
+.btn-danger {
+    background: #d93025;
+    color: white;
+    border: none;
+    padding: 10px 24px;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.btn-danger:hover {
+    background: #b3261e;
+    transform: translateY(-2px);
+}
+
+.section-title {
+    text-align: center;
+    color: #444;
+    margin-bottom: 18px;
+    font-size: 21px;
+}
+
+.divisor {
+    border: none;
+    border-top: 1px solid #eee;
+    margin: 25px 0;
+}
+
+.data-table {
+    width: 100%;
+    margin: 0 auto;
+    border-collapse: collapse;
+    border: none;
+    border-radius: 12px;
+    overflow: hidden;
+    background: white;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+}
+
+.data-table th {
+    background: #ff7b00;
+    color: white;
+    padding: 14px 16px;
+    text-align: center;
+    font-size: 15px;
+}
+
+.data-table td {
+    padding: 13px 16px;
+    border-bottom: 1px solid #eee;
+    text-align: center;
+}
+
+.data-table tr:nth-child(even) td {
+    background: #fffaf5;
+}
+
+.data-table tr:last-child td {
+    border-bottom: none;
+}
+
+.habilidades-table {
+    max-width: 760px;
+}
+
+.alunos-table {
+    max-width: 850px;
+}
+
+.nivel-badge,
+.tipo-badge {
+    display: inline-block;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.nivel-badge {
+    background: #fff1e6;
+    color: #c45a00;
+}
+
+.tipo-admin {
+    background: #eef6ff;
+    color: #1d5f99;
+}
+
+.tipo-aluno {
+    background: #eef8ee;
+    color: #2f7d32;
+}
+
+.inline-form {
+    margin: 3px;
+}
+
+.small-input {
+    width: 65px;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    outline: none;
+    text-align: center;
+}
+
+.small-input:focus {
+    border-color: #ff7b00;
+    box-shadow: 0 0 0 3px rgba(255,123,0,0.15);
+}
+
+.btn-small {
+    background: #ff7b00;
+    color: white;
+    border: none;
+    padding: 8px 11px;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.btn-small:hover {
+    background: #e66f00;
+}
+
+.btn-remove {
+    background: #d93025;
+}
+
+.btn-remove:hover {
+    background: #b3261e;
+}
+
+.table-action {
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.edit-action {
+    color: #ff7b00;
+}
+
+.delete-action {
+    color: #d93025;
+}
+
+.table-action:hover {
+    text-decoration: underline;
+}
+
+/*      Categorias      */
+.categorias-table {
+    max-width: 700px;
+}
+
+.create-link {
+    display: block;
+    text-align: center;
+    text-decoration: none;
+}
+
+.form-editar {
+    text-align: left;
+    font-weight: bold;
+    color: #444;
+}
+
+.form-editar .form-input {
+    margin-top: 6px;
+}
+
+/*      Comentários     */
+.form-textarea {
+    width: 100%;
+    padding: 11px 12px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    outline: none;
+    font-size: 15px;
+    resize: vertical;
+    min-height: 120px;
+    transition: 0.3s;
+}
+
+.form-textarea:focus {
+    border-color: #ff7b00;
+    box-shadow: 0 0 0 3px rgba(255,123,0,0.15);
+}
+
+.comentarios-lista {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.comentario-table {
+    max-width: 820px;
+}
+
+.back-link {
+    display: block;
+    text-align: center;
+    color: #ff7b00;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.back-link:hover {
+    text-decoration: underline;
+}
+
+/*      Habilidade      */
+.habilidades-list-table {
+    max-width: 700px;
+}
+
+/*      Receitas        */
+.receita-form {
+    text-align: center;
+}
+
+.receita-form-table {
+    max-width: 720px;
+}
+
+.receita-form-table td:first-child {
+    width: 190px;
+}
+
+.form-file {
+    width: 100%;
+    padding: 10px;
+    border: 1px dashed #ffb36b;
+    border-radius: 8px;
+    background: #fffaf5;
+    color: #444;
+}
+
+.check-table {
+    width: 100%;
+    max-width: 720px;
+    margin: 0 auto;
+    border-collapse: separate;
+    border-spacing: 8px;
+    border: none;
+}
+
+.check-table td {
+    background: #fffaf5;
+    border: 1px solid #ffd2ad;
+    border-radius: 20px;
+    padding: 9px 14px;
+    color: #444;
+    font-weight: bold;
+    text-align: center;
+}
+
+.form-check {
+    accent-color: #ff7b00;
+    cursor: pointer;
+}
+
+.receita-img {
+    width: 120px;
+    height: 90px;
+    object-fit: cover;
+    border-radius: 10px;
+    border: 1px solid #eee;
+}
+
+.muted-text {
+    color: #777;
+    font-style: italic;
+}
+
+.btn-secondary {
+    background: #1d5f99;
+}
+
+.btn-secondary:hover {
+    background: #164b78;
+}
+
+.checkbox-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 10px;
+}
+
+.check-item {
+    background: #fffaf5;
+    border: 1px solid #ffd2ad;
+    border-radius: 20px;
+    padding: 8px 13px;
+    color: #444;
+    font-weight: bold;
+}
+
+/*      Home        */
+.home-text {
+    text-align: center;
+    color: #666;
+    font-size: 17px;
+    margin-bottom: 28px;
+}
+
+.home-card {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 95px;
+    padding: 20px;
+    background: #fffaf5;
+    border: 1px solid #ffd2ad;
+    border-radius: 12px;
+    color: #ff7b00;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 16px;
+    text-align: center;
+    transition: 0.3s;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.05);
+}
+
+.home-card:hover {
+    background: #ff7b00;
+    color: white;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 18px rgba(255,123,0,0.25);
 }

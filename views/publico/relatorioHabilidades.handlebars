@@ -1,8 +1,9 @@
-<h2>Relatório: Proporção de Alunos por Habilidade</h2>
+<h2 class="page-title">Relatório: Proporção de Alunos por Habilidade</h2>
 <br>
 
 {{#if relatorio}}
-<table border="1" width="60%">
+<div class="relatorio-wrapper"></div>
+<table class="relatorio-table">
     <tr>
         <th>Habilidade</th>
         <th>Qtd Alunos</th>
@@ -13,12 +14,15 @@
     <tr>
         <td>{{nome}}</td>
         <td>{{qt}}</td>
-        <td>{{distribuicao_por_hab}}%</td>
+        <td>
+            <span class="percentual">{{distribuicao_por_hab}}%</span>
+        </td>
     </tr>
     {{/each}}
 </table>
 <br>
-<p>Proporção calculada com base no total de alunos cadastrados.</p>
+<p class="relatorio-info">Proporção calculada com base no total de alunos cadastrados.</p>
+</div>
 {{else}}
-<p>Nenhuma habilidade cadastrada ainda.</p>
+<p class="empty-message">Nenhuma habilidade cadastrada ainda.</p>
 {{/if}}

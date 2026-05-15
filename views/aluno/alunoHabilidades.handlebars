@@ -1,12 +1,12 @@
-<h2>Minhas Habilidades Culinárias</h2>
+<h2 class="page-title">Minhas Habilidades Culinárias</h2>
 <br>
 
-<h3>Adicionar Habilidade</h3>
-<form action="/alunoHabilidades" method="post">
-    <table border="0">
+<h3 class="section-title">Adicionar Habilidade</h3>
+<form class="form-centralizado" action="/alunoHabilidades" method="post">
+    <table class="form-table" border="0">
         <tr>
             <td>Habilidade:</td>
-            <td>
+            <td class="form-select">
                 <select name="habilidade_id" required>
                     <option value="">Selecione...</option>
                     {{#each habilidades}}
@@ -18,22 +18,22 @@
 
         <tr>
             <td>Nível (0 a 10):</td>
-            <td><input type="number" name="nivel" min="0" max="10" required></td>
+            <td><input class="form-input" type="number" name="nivel" min="0" max="10" required></td>
         </tr>
 
         <tr>
             <td colspan="2" align="center">
-                <input type="submit" value="Adicionar">
+                <input class="btn-submit" type="submit" value="Adicionar">
             </td>
         </tr>
     </table>
 </form>
 
 <br>
-<hr><br>
+<hr class="divisor"><br>
 
-<h3>Minhas Habilidades</h3>
-<table border="1" width="60%">
+<h3 class="section-title">Minhas Habilidades</h3>
+<table class="data-table habilidades-table" border="1" width="60%">
     <tr>
         <th>Habilidade</th>
         <th>Nível</th>
@@ -45,13 +45,13 @@
         <td>{{nome}}</td>
         <td>{{nivel}} / 10</td>
         <td>
-            <form action="/alunoHabilidadeUpdate/{{id}}" method="post" style="display:inline;">
-                <input type="number" name="nivel" min="0" max="10" value="{{nivel}}" size="3">
-                <input type="submit" value="Atualizar">
+            <form class="inline-form" action="/alunoHabilidadeUpdate/{{id}}" method="post" style="display:inline;">
+                <input class="small-input" type="number" name="nivel" min="0" max="10" value="{{nivel}}" size="3">
+                <input class="btn-small" type="submit" value="Atualizar">
             </form>
 
-            <form action="/alunoHabilidadeDelete/{{id}}" method="get" style="display:inline;">
-                <input type="submit" value="Remover">
+            <form class="inline-form" action="/alunoHabilidadeDelete/{{id}}" method="get" style="display:inline;">
+                <input class="btn-small" type="submit" value="Remover">
             </form>
         </td>
     </tr>

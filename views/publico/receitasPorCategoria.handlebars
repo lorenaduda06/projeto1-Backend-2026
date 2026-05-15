@@ -1,52 +1,60 @@
-<h2>Receitas por Categoria</h2>
+<h2 class="page-title">Receitas por Categoria</h2>
 <br>
 
-<h3>Escolha uma categoria:</h3>
-{{#each categorias}}
-<a href="/public/categoria/{{id}}">{{nome}}</a><br>
-{{/each}}
-
+<section class="categoria-filtro">
+    <h3>Escolha uma categoria:</h3>
+    <div class="categoria-links">
+        {{#each categorias}}
+        <a href="/public/categoria/{{id}}">{{nome}}</a><br>
+        {{/each}}
+    </div>
+</section>
 <br>
 <hr><br>
 
 {{#if receitas}}
-<h3>Receitas encontradas:</h3>
-<br>
-{{#each receitas}}
-<table border="1" width="80%">
-    <tr>
-        <th width="30%">Nome:</th>
-        <td>{{nome}}</td>
-    </tr>
-    <tr>
-        <th>Descrição:</th>
-        <td>{{descricao}}</td>
-    </tr>
-    <tr>
-        <th>Link Externo:</th>
-        <td><a href="{{link_externo}}" target="_blank">{{link_externo}}</a></td>
-    </tr>
-    <tr>
-        <th>Categorias:</th>
-        <td>
-            {{#each Categorias}}{{nome}}<br>{{/each}}
-        </td>
-    </tr>
-    <tr>
-        <th>Responsáveis:</th>
-        <td>
-            {{#each Alunos}}{{nome}}<br>{{/each}}
-        </td>
-    </tr>
-    <tr>
-        <td colspan="2" align="center">
-            <a href="/comentarioList/{{id}}"><button>Ver Comentários</button></a>
-        </td>
-    </tr>
-</table>
-<br><br>
-{{/each}}
+<section class="receitas-section">
+    <h3 class="section-title">Receitas encontradas:</h3>
+    <br>
+    <div class="receitas-lista"></div>
+    {{#each receitas}}
+    <table class="receita-table">
+        <tr>
+            <th width="30%">Nome:</th>
+            <td>{{nome}}</td>
+        </tr>
+        <tr>
+            <th>Descrição:</th>
+            <td>{{descricao}}</td>
+        </tr>
+        <tr>
+            <th>Link Externo:</th>
+            <td><a class="receita-link" href="{{link_externo}}" target="_blank">{{link_externo}}</a></td>
+        </tr>
+        <tr>
+            <th>Categorias:</th>
+            <td>
+                {{#each Categorias}}<span class="tag">{{nome}}</span>{{/each}}
+            </td>
+        </tr>
+        <tr>
+            <th>Responsáveis:</th>
+            <td>
+                {{#each Alunos}}<span class="responsavel">{{nome}}</span>{{/each}}
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2" align="center">
+                <a href="/comentarioList/{{id}}"><button class="btn-comentarios">Ver Comentários</button></a>
+            </td>
+        </tr>
+    </table>
+    <br><br>
+    {{/each}}
+    </div>
+</section>
 {{/if}}
 
-<br>
-<a href="/">Voltar para todas as receitas</a>
+<div class="voltar-link">
+    <a href="/">Voltar para todas as receitas</a>
+</div>

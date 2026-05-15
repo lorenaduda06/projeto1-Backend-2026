@@ -1,14 +1,14 @@
-<h2>Editar Categoria</h2>
+<h2 class="page-title">Editar Categoria</h2>
 <br>
 
-<form action="/categoriaUpdate" method="post">
+<form class="form-centralizado form-editar" action="/categoriaUpdate" method="post">
     <input type="hidden" name="id" value={{categoria.id}}>
-    Nome: <input type="text" name="nome" value="{{categoria.nome}}">
+    Nome: <input class="form-input" type="text" name="nome" value="{{categoria.nome}}">
     <br><br>
-    <input type="submit" value="Atualizar">
+    <input class="btn-submit" type="submit" value="Atualizar">
 </form>
 
 <br>
-<a href="/categoriaDelete/{{categoria.id}}">
-    <button>Excluir</button>
+<a class="delete-link" href="/categoriaDelete/{{categoria.id}}">
+    <button class="btn-danger">Excluir</button>
 </a>

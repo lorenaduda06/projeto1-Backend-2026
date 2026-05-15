@@ -1,6 +1,6 @@
-<h2>Lista de Alunos</h2>
+<h2 class="page-title">Lista de Alunos</h2>
 <br>
-<table border="1" width="80%">
+<table class="data-table alunos-table" border="1" width="80%">
     <tr>
         <th>ID</th>
         <th>Email</th>
@@ -15,12 +15,17 @@
     <tr>
         <td>{{id}}</td>
         <td>{{email}}</td>
-        <td>{{#if tipo}}Admin{{else}}Aluno{{/if}}</td>
+        <td>
+            <span class="tipo-badge {{#if tipo}}tipo-admin{{else}}tipo-aluno{{/if}}">
+                {{#if tipo}}Admin{{else}}Aluno{{/if}}
+            </span>
+        </td>
 
         {{#if ../admin}}
         <td>
-            <a href="/alunoUpdate/{{id}}">Editar</a> |
-            <a href="/alunoDelete/{{id}}" onclick="return confirm('Tem certeza?')">Excluir</a>
+            <a class="table-action edit-action" href="/alunoUpdate/{{id}}">Editar</a> |
+            <a class="table-action delete-action" href="/alunoDelete/{{id}}"
+                onclick="return confirm('Tem certeza?')">Excluir</a>
         </td>
         {{/if}}
     </tr>

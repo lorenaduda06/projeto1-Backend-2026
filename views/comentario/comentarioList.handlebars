@@ -1,36 +1,38 @@
-<h2>Comentários da Receita</h2>
+<h2 class="page-title">Comentários da Receita</h2>
 <br>
 
 {{#if comentarios}}
-{{#each comentarios}}
-<table border="1" width="80%">
-    <tr>
-        <th width="20%">Título:</th>
-        <td>{{titulo}}</td>
-    </tr>
+<div class="comentarios-lista">
+    {{#each comentarios}}
+    <table class="receita-table comentario-table" border="1" width="80%">
+        <tr>
+            <th width="20%">Título:</th>
+            <td>{{titulo}}</td>
+        </tr>
 
-    <tr>
-        <th>Autor:</th>
-        <td>{{autor}}</td>
-    </tr>
+        <tr>
+            <th>Autor:</th>
+            <td>{{autor}}</td>
+        </tr>
 
-    <tr>
-        <th>Comentário:</th>
-        <td>{{texto}}</td>
-    </tr>
+        <tr>
+            <th>Comentário:</th>
+            <td>{{texto}}</td>
+        </tr>
 
-    <tr>
-        <th>Data:</th>
-        <td>{{data}}</td>
-    </tr>
-</table>
-<br><br>
-{{/each}}
+        <tr>
+            <th>Data:</th>
+            <td>{{data}}</td>
+        </tr>
+    </table>
+    <br><br>
+    {{/each}}
+</div>
 {{else}}
-<p>Nenhum comentário cadastrado para esta receita.</p>
+<p class="empty-message">Nenhum comentário cadastrado para esta receita.</p>
 {{/if}}
 
 <br>
-<a href="/comentarioCreate/{{receita_id}}">Adicionar novo comentário</a>
+<a class="create-link" href="/comentarioCreate/{{receita_id}}">Adicionar novo comentário</a>
 <br><br>
-<a href="/receitaList">Voltar para minhas receitas</a>
+<a class="back-link" href="/receitaList">Voltar para minhas receitas</a>
