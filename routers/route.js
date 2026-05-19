@@ -30,7 +30,7 @@ db.sequelize.sync({ force: true }).then(() => {
 // Depois de criar as tabelas, pare a execução, comente a criação de tabelas (acima) e descomente o código para criar o administrador
 
 // 2) Cria o admin
-db.Aluno.create({ nome: "Administrador", email: "admin@gmail.com", senha: "1234", tipo: 1 });
+//db.Aluno.create({ nome: "Administrador", email: "admin@gmail.com", senha: "1234", tipo: 1 });
 
 module.exports = route;
 
